@@ -1,4 +1,4 @@
-import Button from "./ui/shared/Button";
+import Button from "../../ui/shared/Button";
 import { FaRegCheckCircle } from "react-icons/fa";
 
 function TeamCard() {

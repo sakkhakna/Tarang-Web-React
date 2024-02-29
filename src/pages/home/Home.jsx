@@ -3,9 +3,9 @@ import { GiShuttlecock } from "react-icons/gi";
 import { TbPingPong } from "react-icons/tb";
 import { PiVolleyball } from "react-icons/pi";
 import { FaArrowRight } from "react-icons/fa";
-import VenueCard from "../VenueCard";
-import TournamentCard from "../TournamentCard";
-import TeamCard from "../TeamCard";
+import VenueCard from "../venue/component/VenueCard";
+import TournamentCard from "../component/TournamentCard";
+import TeamCard from "../team/component/TeamCard";
 // import Link from "next/link";
 import { Link } from "react-router-dom";
 
