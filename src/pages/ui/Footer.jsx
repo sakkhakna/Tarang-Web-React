@@ -1,5 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
+// import Image from "next/image";
+// import Link from "next/link";
+import { Link } from "react-router-dom";
 import Logo from "../../assets/img/tarang_logo.png";
 
 function Footer() {
