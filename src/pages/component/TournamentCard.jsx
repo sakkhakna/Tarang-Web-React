@@ -1,4 +1,4 @@
-import Button from "../pages/ui/shared/Button";
+import Button from "../ui/shared/Button";
 
 function TournamentCard() {
 	return (
