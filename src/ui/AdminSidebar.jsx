@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/img/tarang_logo.png";
+import Logo from "../assets/img/tarang_logo.png";
 import { TbSoccerField } from "react-icons/tb";
 import { MdDashboard } from "react-icons/md";
 import { FaBookmark } from "react-icons/fa";
@@ -19,9 +19,9 @@ function AdminSidebar() {
           <NavLink
             to="/"
             className={({ isActive }) => {
-              return (!isActive
+              return !isActive
                 ? "font-semibold flex gap-2 items-center hover:bg-green-300 p-2 rounded-lg"
-                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300");
+                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
             }}
           >
             <MdDashboard />
@@ -36,7 +36,7 @@ function AdminSidebar() {
                 : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
             }}
           >
-            <TbSoccerField/>
+            <TbSoccerField />
             Venue
           </NavLink>
 

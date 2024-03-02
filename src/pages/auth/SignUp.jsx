@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "../ui/shared/Input";
+import Input from "../../ui/shared/Input";
 import Logo from "../../assets/img/logo_latin.png";
-import Button from "../ui/shared/Button";
+import Button from "../../ui/shared/Button";
 import Fb from "../../assets/img/facebook.png";
 import Google from "../../assets/img/google.png";
 
@@ -15,14 +15,15 @@ function SignUp() {
           </div>
           <div className="w-1/2 h-full flex flex-col gap-4 justify-center p-10">
             <h1 className="text-4xl font-bold">Sign Up</h1>
-            <Input placeholder="Enter Name" 
-            />
-            <Input placeholder="Enter Phone Number"
-            />
+            <Input placeholder="Enter Name" />
+            <Input placeholder="Enter Phone Number" />
             <Button customClass="md:text-xl h-[20px] py-1">Sign Up</Button>
             <div className="flex justify-center">
               <p>
-                Already have Account? <a className="hover:underline" href="/signin">Sign In</a>
+                Already have Account?{" "}
+                <a className="hover:underline" href="/signin">
+                  Sign In
+                </a>
               </p>
             </div>
             <div className="w-full flex justify-center gap-2">

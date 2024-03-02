@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Logo from "../../assets/img/tarang_logo.png";
+import Logo from "../assets/img/tarang_logo.png";
 
 function Footer() {
 	return (

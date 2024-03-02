@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "../ui/shared/Input";
+import Input from "../../ui/shared/Input";
 import Logo from "../../assets/img/logo_latin.png";
-import Button from "../ui/shared/Button";
+import Button from "../../ui/shared/Button";
 import Fb from "../../assets/img/facebook.png";
 import Google from "../../assets/img/google.png";
 
