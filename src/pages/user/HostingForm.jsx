@@ -1,6 +1,5 @@
-import React from "react";
-import Input from "../ui/shared/Input"
-import Button from "../ui/shared/Button";
+import Input from "../../ui/shared/Input"
+import Button from "../../ui/shared/Button";
 
 function page() {
   return (

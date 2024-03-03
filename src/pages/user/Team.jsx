@@ -1,12 +1,11 @@
-import DropdownButton from "../ui/shared/DropdownButton";
-import TabButton from "../ui/shared/TapButton";
-import TeamCard from "../team/component/TeamCard";
+import TabButton from "../../ui/shared/TabButton";
+import TeamCard from "../../ui/component/TeamCard";
 
 function TeamPage() {
-  const dropdownContent = [
-    { id: 1, type: "default 1" },
-    { id: 2, type: "default 2" },
-  ];
+  // const dropdownContent = [
+  //   { id: 1, type: "default 1" },
+  //   { id: 2, type: "default 2" },
+  // ];
   return (
     <section className="p-10 xl:px-0">
       <h1 className="font-bold text-2xl md:text-4xl mb-10 mt-[98px]">Team</h1>
@@ -124,9 +123,9 @@ function TeamPage() {
           />
         </div>
         <div>
-          <DropdownButton dropdownContent={dropdownContent}>
+          {/* <DropdownButton dropdownContent={dropdownContent}>
             View By
-          </DropdownButton>
+          </DropdownButton> */}
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">

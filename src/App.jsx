@@ -4,11 +4,15 @@ import SignIn from "./pages/auth/SignIn";
 import UserLayout from "./ui/UserLayout";
 import AdminLayout from "./ui/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
-import Venue from "./pages/admin/Venue";
-import Team from "./pages/admin/Team";
-import Reserve from "./pages/admin/Reserve";
+import AdminVenue from "./pages/admin/Venue";
+import AdminTeam from "./pages/admin/Team";
+import AdminReservation from "./pages/admin/Reserve";
 import User from "./pages/admin/User";
 import SignUp from "./pages/auth/SignUp";
+import Team from "./pages/user/Team";
+import ReservationVenueForm from "./pages/user/ReservationVenueForm";
+import Profile from "./pages/user/Profile";
+import HostingForm from "./pages/user/HostingForm";
 
 function App() {
   const role = "user";
@@ -18,14 +22,18 @@ function App() {
         {role === "admin" ? (
           <Route path="/" element={<AdminLayout />}>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/venue" element={<Venue />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/reserve" element={<Reserve />} />
+            <Route path="/venue" element={<AdminVenue />} />
+            <Route path="/team" element={<AdminTeam />} />
+            <Route path="/reserve" element={<AdminReservation />} />
             <Route path="/user" element={<User />} />
           </Route>
         ) : (
           <Route path="/" element={<UserLayout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/reservation" element={<ReservationVenueForm />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/hosting" element={<HostingForm />} />
           </Route>
         )}
         <Route path="/signin" element={<SignIn />} />

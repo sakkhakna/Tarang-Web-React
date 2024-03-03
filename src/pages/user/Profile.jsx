@@ -1,5 +1,5 @@
-import Button from "../ui/shared/Button";
-import Input from "../ui/shared/Input";
+import Button from "../../ui/shared/Button";
+import Input from "../../ui/shared/Input";
 
 function Profile() {
 	return (
