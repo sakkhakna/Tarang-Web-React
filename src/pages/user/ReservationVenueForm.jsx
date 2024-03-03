@@ -1,5 +1,5 @@
-import Button from "../ui/shared/Button.jsx";
-import Input from "../ui/shared/Input.jsx";
+import Button from "../../ui/shared/Button.jsx";
+import Input from "../../ui/shared/Input.jsx";
 
 function ReservationVenueForm() {
   return (
