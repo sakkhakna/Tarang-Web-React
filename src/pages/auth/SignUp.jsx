@@ -5,23 +5,24 @@ import Button from "../../ui/shared/Button";
 import Fb from "../../assets/img/facebook.png";
 import Google from "../../assets/img/google.png";
 
-function SignIn() {
+function SignUp() {
   return (
     <div className="flex flex-col gap-10 p-10 xl:px-0 items-center">
       <div className="max-w-5xl">
         <div className="w-[960px] h-[540px] bg-white flex gap-4">
-          <div className="w-1/2 bg-[#d9d9d9] h-full flex items-center">
+          <div className="flex w-1/2 bg-[#d9d9d9] h-full items-center">
             <img src={Logo} alt="logo" className="h-[470px] w-[470px]" />
           </div>
           <div className="w-1/2 h-full flex flex-col gap-4 justify-center p-10">
-            <h1 className="text-4xl font-bold">Sign In</h1>
+            <h1 className="text-4xl font-bold">Sign Up</h1>
+            <Input placeholder="Enter Name" />
             <Input placeholder="Enter Phone Number" />
-            <Button customClass="md:text-xl h-[20px] py-1">Sign In</Button>
+            <Button customClass="md:text-xl h-[20px] py-1">Sign Up</Button>
             <div className="flex justify-center">
               <p>
-                Don't have Account?{" "}
-                <a className="hover:underline" href="/signup">
-                  Sign Up
+                Already have Account?{" "}
+                <a className="hover:underline" href="/signin">
+                  Sign In
                 </a>
               </p>
             </div>
@@ -45,4 +46,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;
