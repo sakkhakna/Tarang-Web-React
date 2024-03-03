@@ -1,7 +1,7 @@
 import Button from "../../ui/shared/Button.jsx";
 import Input from "../../ui/shared/Input.jsx";
 
-function ReservationVenueForm() {
+function ReservationForm() {
   return (
     <div className="max-w-4xl mx-auto mt-[98px]">
       <div className="bg-[#EAEAEA] h-52 mt-[150px]">Banner</div>
@@ -152,4 +152,4 @@ function ReservationVenueForm() {
   );
 }
 
-export default ReservationVenueForm;
+export default ReservationForm;

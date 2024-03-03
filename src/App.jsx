@@ -10,7 +10,7 @@ import AdminReservation from "./pages/admin/Reserve";
 import User from "./pages/admin/User";
 import SignUp from "./pages/auth/SignUp";
 import Team from "./pages/user/Team";
-import ReservationVenueForm from "./pages/user/ReservationVenueForm";
+import ReservationForm from "./pages/user/ReservationForm";
 import Profile from "./pages/user/Profile";
 import HostingForm from "./pages/user/HostingForm";
 
@@ -31,7 +31,7 @@ function App() {
           <Route path="/" element={<UserLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/team" element={<Team />} />
-            <Route path="/reservation" element={<ReservationVenueForm />} />
+            <Route path="/reservation" element={<ReservationForm />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/hosting" element={<HostingForm />} />
           </Route>
