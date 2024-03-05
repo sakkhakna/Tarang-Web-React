@@ -1,17 +1,31 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import Input from "../../ui/shared/Input";
 import Logo from "../../assets/img/logo_latin.png";
 import Button from "../../ui/shared/Button";
 import Fb from "../../assets/img/facebook.png";
 import Google from "../../assets/img/google.png";
+import axios from "axios";
 
 function SignUp() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    axios.get("http://api.tarang.test/sanctum/csrf-cookie", {
+      withCredentials: true,
+      withXSRFToken: true,
+      headers: {
+        Accept: "application/json",
+      }
+    })
+  }, []);
+
+
   const [inputData, setInputData] = useState({
     name: "",
-    phoneNumber: "",
+    phone: "",
     password: "",
-    confirmPassword: "",
+    password_confirmation: "",
   });
 
   const onChange = (e) => {
@@ -25,6 +39,16 @@ function SignUp() {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(inputData);
+    axios.post("http://api.tarang.test/register", inputData, {
+      withCredentials: true,
+      withXSRFToken: true,
+      headers: {
+        Accept: "application/json",
+      }
+    }).catch(error => {
+      console.log(error);
+    });
+    navigate("/")
   };
   return (
     <div className="flex flex-col gap-10 p-10 xl:px-0 items-center">
@@ -46,7 +70,7 @@ function SignUp() {
               isRequired={true}
             />
             <Input
-              id="phoneNumber"
+              id="phone"
               type="text"
               onChange={onChange}
               placeholder="Enter Phone Number"
@@ -60,7 +84,7 @@ function SignUp() {
               isRequired={true}
             />
             <Input
-              id="confirmPassword"
+              id="password_confirmation"
               type="password"
               onChange={onChange}
               placeholder="Confirm Password"
@@ -84,7 +108,7 @@ function SignUp() {
               <Link to="/">
                 <img src={Fb} alt="fb" className="w-[40px] h-[40px]" />
               </Link>
-              <Link to="/">
+              <Link to="http://127.0.0.1:8000/auth/google/redirect">
                 <img src={Google} alt="google" className="w-[40px] h-[40px]" />
               </Link>
             </div>
