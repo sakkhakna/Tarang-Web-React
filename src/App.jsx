@@ -14,6 +14,8 @@ import ReservationForm from "./pages/user/ReservationForm";
 import Profile from "./pages/user/Profile";
 import HostingForm from "./pages/user/HostingForm";
 import Badminton from "./pages/user/sport/Badminton";
+import ChallengeForm from "./pages/user/ChallengeForm";
+import JoinForm from "./pages/user/JoinForm";
 
 function App() {
   const role = "user";
@@ -36,6 +38,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/hosting" element={<HostingForm />} />
             <Route path="/sport" element={<Badminton />} />
+            <Route path="/challenge" element={<ChallengeForm />} />
+            <Route path="/join" element={<JoinForm />} />
           </Route>
         )}
         <Route path="/signin" element={<SignIn />} />

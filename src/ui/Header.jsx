@@ -7,7 +7,7 @@ function Header() {
   return (
     <header className="w-full bg-[#d9d9d9] sticky top-0 left-0 z-40">
       <div className="max-w-7xl mx-auto p-6 xl:px-0 flex justify-between">
-        <Link href="/">
+        <Link to="/">
           {/* <Image src="/tarang_logo.png" alt="logo" width={150} height={50} /> */}
           <img src={Logo} alt="Logo" width={150} height={50} />
         </Link>

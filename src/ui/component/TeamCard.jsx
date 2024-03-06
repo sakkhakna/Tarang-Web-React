@@ -1,6 +1,7 @@
-import Button from "../shared/Button";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
+import Button from "../shared/Button";
+import LinkButton from "../shared/LinkButton";
 
 function TeamCard() {
   return (
@@ -28,8 +29,8 @@ function TeamCard() {
           Accepting new members
         </div>
         <div className="flex gap-4">
-          <Button customClass="w-full">Join</Button>
-          <Button customClass="w-full">Challenge</Button>
+          <LinkButton toPage="/join">Join</LinkButton>
+          <LinkButton toPage="/challenge">Challenge</LinkButton>
         </div>
       </div>
     </div>
