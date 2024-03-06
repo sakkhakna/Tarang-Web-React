@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../../ui/shared/Input";
 import Logo from "../../assets/img/logo_latin.png";
 import Button from "../../ui/shared/Button";
@@ -8,18 +8,17 @@ import Google from "../../assets/img/google.png";
 import axios from "axios";
 
 function SignUp() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://api.tarang.test/sanctum/csrf-cookie", {
+    axios.get("https://api.tarang.site/sanctum/csrf-cookie", {
       withCredentials: true,
       withXSRFToken: true,
       headers: {
         Accept: "application/json",
-      }
-    })
+      },
+    });
   }, []);
-
 
   const [inputData, setInputData] = useState({
     name: "",
@@ -39,16 +38,18 @@ function SignUp() {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(inputData);
-    axios.post("http://api.tarang.test/register", inputData, {
-      withCredentials: true,
-      withXSRFToken: true,
-      headers: {
-        Accept: "application/json",
-      }
-    }).catch(error => {
-      console.log(error);
-    });
-    navigate("/")
+    axios
+      .post("https://api.tarang.site/register", inputData, {
+        withCredentials: true,
+        withXSRFToken: true,
+        headers: {
+          Accept: "application/json",
+        },
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    navigate("/");
   };
   return (
     <div className="flex flex-col gap-10 p-10 xl:px-0 items-center">
@@ -108,7 +109,7 @@ function SignUp() {
               <Link to="/">
                 <img src={Fb} alt="fb" className="w-[40px] h-[40px]" />
               </Link>
-              <Link to="http://127.0.0.1:8000/auth/google/redirect">
+              <Link to="https://api.tarang.site/auth/google/redirect">
                 <img src={Google} alt="google" className="w-[40px] h-[40px]" />
               </Link>
             </div>
