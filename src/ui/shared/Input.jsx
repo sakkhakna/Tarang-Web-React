@@ -11,7 +11,15 @@ function Input({
   value,
   isRequired,
   disabled,
+  customClass,
 }) {
+
+  const defaultClass =
+		"rounded-xl w-full px-4 py-2 border focus:outline-none focus:ring focus:border-[#2AD5A5]";
+	const InputClass = customClass
+		? `${defaultClass} ${customClass}`
+		: defaultClass;
+
   const isPasswordInput = type === "password";
   const [showPassword, setShowPassword] = useState(false);
 
@@ -33,7 +41,7 @@ function Input({
           onChange={onChange}
           value={value}
           required={isRequired}
-          className="rounded-xl w-full px-4 py-2 border focus:outline-none focus:ring focus:border-[#2AD5A5]"
+          className={InputClass}
           disabled={disabled}
         />
         {isPasswordInput && (
