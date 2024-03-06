@@ -1,7 +1,6 @@
-import { IoSearch } from "react-icons/io5";
-import { IoSearchCircleOutline } from "react-icons/io5";
 import React from "react";
 import Input from "../shared/Input";
+import Button from "../shared/Button";
 
 function BannerFilter() {
   return (
@@ -9,14 +8,6 @@ function BannerFilter() {
       <div className="w-full flex flex-col gap-10">
         <h1 className="text-4xl font-bold text-center">Find Best Venue</h1>
         <div className="flex gap-4 items-center bg-[#d9d9d9] px-2 pb-2 rounded-xl">
-          <div className="w-full relative ">
-            <IoSearch className="absolute top-5 left-2 z-10" />
-            <Input
-              type="search"
-              placeholder="Find Court..."
-              customClass="px-8 rounded-xl"
-            />
-          </div>
           <div className="w-full">
             <Input type="date" />
           </div>
@@ -31,9 +22,7 @@ function BannerFilter() {
             <option value="badminton">Badminton</option>
             <option value="volleyball">Volleyball</option>
           </select>
-          <button className="w-[50px] h-[50px] mt-2 rounded-full">
-            <IoSearchCircleOutline className="w-[50px] h-[50px] bg-[#fff] rounded-full" />
-          </button>
+          <Button customClass={'py-2 px-6 md:h-[45px] mt-2'}>Search</Button>
         </div>
       </div>
     </div>
