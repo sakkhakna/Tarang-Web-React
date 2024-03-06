@@ -13,6 +13,7 @@ import Team from "./pages/user/Team";
 import ReservationForm from "./pages/user/ReservationForm";
 import Profile from "./pages/user/Profile";
 import HostingForm from "./pages/user/HostingForm";
+import Badminton from "./pages/user/sport/Badminton";
 
 function App() {
   const role = "user";
@@ -34,6 +35,7 @@ function App() {
             <Route path="/reservation" element={<ReservationForm />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/hosting" element={<HostingForm />} />
+            <Route path="/sport" element={<Badminton />} />
           </Route>
         )}
         <Route path="/signin" element={<SignIn />} />
