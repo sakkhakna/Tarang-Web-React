@@ -16,8 +16,13 @@ import HostingForm from "./pages/user/HostingForm";
 import Badminton from "./pages/user/sport/Badminton";
 import ChallengeForm from "./pages/user/ChallengeForm";
 import JoinForm from "./pages/user/JoinForm";
+import { useEffect } from "react";
+import { getSportType } from "./service/venue";
 
 function App() {
+  useEffect(() => {
+    getSportType();
+  }, []);
   const role = "user";
   return (
     <Router>
