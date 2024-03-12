@@ -16,9 +16,10 @@ import HostingForm from "./pages/user/HostingForm";
 import Badminton from "./pages/user/sport/Badminton";
 import ChallengeForm from "./pages/user/ChallengeForm";
 import JoinForm from "./pages/user/JoinForm";
+import VenueForm from "./pages/admin/VenueForm";
 
 function App() {
-  const role = "user";
+  const role = "admin";
   return (
     <Router>
       <Routes>
@@ -29,6 +30,7 @@ function App() {
             <Route path="/team" element={<AdminTeam />} />
             <Route path="/reserve" element={<AdminReservation />} />
             <Route path="/user" element={<User />} />
+            <Route path="/venueform" element={<VenueForm />} />
           </Route>
         ) : (
           <Route path="/" element={<UserLayout />}>
