@@ -20,7 +20,9 @@ export const addVenue = async (inputdata) => {
 export const createVenue = async (venue) => {
     console.log(venue);
   try {
-    const res = await axios.post("https://api.tarang.site/api/venues", venue);
+    const res = await axios.post("https://api.tarang.site/api/venues", venue, {
+      headers: { 'content-type': 'multipart/form-data' }
+    });
     console.log(res);
   } catch (error) {
     console.log(error);

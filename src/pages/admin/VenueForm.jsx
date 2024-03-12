@@ -2,7 +2,7 @@ import Input from "../../ui/shared/Input";
 import LinkButton from "../../ui/shared/LinkButton";
 import Button from "../../ui/shared/Button";
 import { useState } from "react";
-import { addVenue, createVenue } from "../../service/Venue.api";
+import { createVenue } from "../../service/Venue.api";
 
 function VenueForm() {
   const [inputData, setInputData] = useState({
@@ -12,18 +12,32 @@ function VenueForm() {
     description: "",
     photo: "",
   });
+
   const onChange = (e) => {
     e.preventDefault();
-    setInputData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value,
-    }));
+    if (e.target.id === "photo") {
+      setInputData((prevState) => ({
+        ...prevState,
+        [e.target.id]: e.target.files[0],
+      }));
+    } else {
+      setInputData((prevState) => ({
+        ...prevState,
+        [e.target.id]: e.target.value,
+      }));
+    }
   };
   console.log(inputData);
 
   const Submit = (e) => {
     e.preventDefault();
-    createVenue(inputData);
+    const formData = new FormData();
+    formData.append('photo', inputData.photo);
+    formData.append('name', inputData.name);
+    formData.append('sport_type_id', inputData.sport_type_id);
+    formData.append('description', inputData.description);
+    formData.append('size', inputData.size);
+    createVenue(formData);
   };
 
   return (
@@ -92,7 +106,7 @@ function VenueForm() {
             <LinkButton toPage="/" customClass={"md:w-[150px] text-center"}>
               Cancel
             </LinkButton>
-            <Button type={'submit'} customClass="md:w-[150px]">
+            <Button type={"submit"} customClass="md:w-[150px]">
               Add Venue
             </Button>
           </div>
