@@ -18,6 +18,8 @@ import ChallengeForm from "./pages/user/ChallengeForm";
 import JoinForm from "./pages/user/JoinForm";
 import VenueForm from "./pages/admin/VenueForm";
 import Venue from "./pages/user/venue/Venue";
+import SingleVenuePage from "./pages/user/venue/SingleVenue";
+import Otp from "./pages/auth/Otp";
 
 function App() {
   const role = "user";
@@ -38,6 +40,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/team" element={<Team />} />
             <Route path="/venue" element={<Venue />} />
+            <Route path="/venue/:id" element={<SingleVenuePage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/sport" element={<Badminton />} />
             <Route path="/reservation" element={<ReservationForm />} />
@@ -48,6 +51,7 @@ function App() {
         )}
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/otp" element={<Otp />} />
       </Routes>
     </Router>
   );
