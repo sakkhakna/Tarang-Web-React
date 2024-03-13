@@ -17,6 +17,7 @@ import Otp from "./pages/auth/Otp";
 import Badminton from "./pages/user/sport/Badminton";
 import ChallengeForm from "./pages/user/ChallengeForm";
 import JoinForm from "./pages/user/JoinForm";
+import VenueForm from "./pages/admin/VenueForm";
 import RegisterTournament from "./pages/user/RegisterTournament";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
 						<Route path="/team" element={<AdminTeam />} />
 						<Route path="/reserve" element={<AdminReservation />} />
 						<Route path="/user" element={<User />} />
+            <Route path="/venueform" element={<VenueForm />} />
 					</Route>
 				) : (
 					<Route path="/" element={<UserLayout />}>

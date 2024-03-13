@@ -1,6 +1,5 @@
 import { FaRegCheckCircle } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
-import Button from "../shared/Button";
 import LinkButton from "../shared/LinkButton";
 
 function TeamCard() {
