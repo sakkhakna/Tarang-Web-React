@@ -13,6 +13,7 @@ import Team from "./pages/user/Team";
 import ReservationForm from "./pages/user/ReservationForm";
 import Profile from "./pages/user/Profile";
 import HostingForm from "./pages/user/HostingForm";
+import Otp from "./pages/auth/Otp";
 import Badminton from "./pages/user/sport/Badminton";
 import ChallengeForm from "./pages/user/ChallengeForm";
 import JoinForm from "./pages/user/JoinForm";
@@ -49,6 +50,7 @@ function App() {
 				)}
 				<Route path="/signin" element={<SignIn />} />
 				<Route path="/signup" element={<SignUp />} />
+        <Route path="/otp" element={<Otp />} />
 			</Routes>
 		</Router>
 	);
