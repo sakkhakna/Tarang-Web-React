@@ -1,40 +1,44 @@
-import React from "react";
 import Button from "../../../ui/shared/Button";
 import { IoMdCheckmark } from "react-icons/io";
 import { GiTennisCourt } from "react-icons/gi";
 import Input from "../../../ui/shared/Input";
 import { FaTelegramPlane } from "react-icons/fa";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
-function SingleVenuePage() {
+function SingleTournament() {
 	return (
 		<div>
-			<div className="bg-[#f5f5f5] max-w-7xl flex gap-4 p-10 xl:px-0 mt-[98px]">
-				<div className="flex flex-col gap-10 w-[70%]">
-					<div className="flex flex-col gap-4 bg-white p-10">
-						<h1 className="text-gray-300">type of venue</h1>
+			<div className="bg-[#f5f5f5] max-w-7xl flex gap-6 p-10 xl:px-0">
+				<div className="flex flex-col gap-6 w-[70%]">
+					{/* <div className="flex items-center gap-2">
+						<FaArrowLeftLong />
+						Back to Tournament
+					</div> */}
+					<div className="flex flex-col gap-4 bg-white p-10 rounded-lg shadow">
+						<h1 className="text-gray-300">Football</h1>
 						<h1 className="text-2xl md:text-4xl font-bold">
-							Name of the Venue
+							UEFA Champions League
 						</h1>
-						<div className="bg-black w-full p-2">
-							<h1 className="text-2xl text-white">Option</h1>
+						<div className="bg-gray-800 w-full p-2">
+							<h1 className="text-2xl text-white">Prize</h1>
 						</div>
-						<div className="grid grid-cols-3">
-							<div className="flex gap-2 justify-center">
-								<h1 className="text-xl text-gray-400 font-bold">hour</h1>
-								<h1 className="text-2xl text-blue-500 font-bold">5$</h1>
-							</div>
-							<div className="flex gap-2 justify-center">
-								<h1 className="text-xl text-gray-400 font-bold">weekly</h1>
-								<h1 className="text-2xl text-blue-500 font-bold">30$</h1>
-							</div>
-							<div className="flex gap-2 justify-center">
-								<h1 className="text-xl text-gray-400 font-bold">monthly</h1>
+						<div className="flex gap-[120px] mx-auto">
+							<div className="flex gap-2 justify-center items-center">
+								<h1 className="text-xl text-gray-400 font-bold">First Place</h1>
 								<h1 className="text-2xl text-blue-500 font-bold">100$</h1>
 							</div>
+							<div className="flex gap-2 justify-center items-center">
+								<h1 className="text-xl text-gray-400 font-bold">Runner-up</h1>
+								<h1 className="text-2xl text-blue-500 font-bold">50$</h1>
+							</div>
+							{/* <div className="flex gap-2 justify-center">
+								<h1 className="text-xl text-gray-400 font-bold">monthly</h1>
+								<h1 className="text-2xl text-blue-500 font-bold">100$</h1>
+							</div> */}
 						</div>
 					</div>
 
-					<div className="flex flex-col bg-[#ffffff] justify-center p-10 gap-10">
+					<div className="flex flex-col bg-[#ffffff] justify-center p-10 gap-4 rounded-lg shadow">
 						<h1 className="font-bold text-xl">Description and details</h1>
 						<div className="flex flex-col gap-4 text-2xl">
 							<div className="flex gap-4 justify-center">
@@ -44,14 +48,14 @@ function SingleVenuePage() {
 								</h1>
 							</div>
 							<div className="text-sm">
-								<h1>Description</h1>
-								<h1>Description</h1>
+								<h1>Time: 9 AM - 4 PM</h1>
+								<h1>Event Date: 10 - 14 April 2024</h1>
 								<h1>Description</h1>
 							</div>
 						</div>
 					</div>
 
-					<div className="flex flex-col gap-10 bg-white p-10">
+					<div className="flex flex-col gap-4 bg-white p-10 rounded-lg shadow">
 						<h1 className="font-bold text-xl">Amenities</h1>
 						<div className="flex gap-10">
 							<div className="flex gap-2">
@@ -78,8 +82,8 @@ function SingleVenuePage() {
 					</div>
 				</div>
 				<div className="flex flex-col gap-4 w-[30%]">
-					<Button customClass="w-full">Book</Button>
-					<div className="w-full p-10 flex flex-col gap-10 bg-white">
+					<Button customClass="md:w-full text-white">Book</Button>
+					<div className="w-full p-6 flex flex-col gap-4 bg-white rounded-lg shadow">
 						<h1 className="text-xl font-bold">Contact Manager</h1>
 						<div className="w-full">
 							<div className="flex flex-col gap-4">
@@ -112,7 +116,7 @@ function SingleVenuePage() {
 										placeholder="Enter Your Message"
 									></textarea>
 								</div>
-								<Button customClass="w-full flex justify-center gap-4">
+								<Button customClass="md:w-full flex justify-center gap-3 text-white items-center">
 									<FaTelegramPlane className="w-[20px] h-[20px]" />
 									<h1>Sent Message</h1>
 								</Button>
@@ -125,4 +129,4 @@ function SingleVenuePage() {
 	);
 }
 
-export default SingleVenuePage;
+export default SingleTournament;
