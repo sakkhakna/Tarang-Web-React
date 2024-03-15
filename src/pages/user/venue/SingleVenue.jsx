@@ -79,7 +79,7 @@ function SingleVenuePage() {
 				</div>
 				<div className="flex flex-col gap-4 w-[30%]">
 					<Button customClass="md:w-full text-white">Book</Button>
-					<div className="w-full p-10 flex flex-col gap-4 bg-white rounded-lg shadow">
+					<div className="w-full p-6 flex flex-col gap-4 bg-white rounded-lg shadow">
 						<h1 className="text-xl font-bold">Contact Manager</h1>
 						<div className="w-full">
 							<div className="flex flex-col gap-4">
