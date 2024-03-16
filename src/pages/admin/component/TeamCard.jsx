@@ -18,7 +18,9 @@ function TeamCard() {
           <FaRegCheckCircle className="w-[20px] h-[20px]" />
           Accepting new members
         </div>
-        <Button customClass={'bg-white text-black border-black border'}>Veiw Team</Button>
+        <Button customClass={'bg-white text-black border-black border'}>
+        <h1 className="text-black">Veiw Team</h1>
+        </Button>
       </div>
     </div>
   )

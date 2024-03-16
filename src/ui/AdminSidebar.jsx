@@ -20,8 +20,8 @@ function AdminSidebar() {
             to="/"
             className={({ isActive }) => {
               return !isActive
-                ? "font-semibold flex gap-2 items-center hover:bg-green-300 p-2 rounded-lg"
-                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
+                ? "font-semibold flex gap-2 items-center hover:text-white hover:bg-[#2AD5A5] p-2 rounded-lg"
+                : "font-semibold flex gap-2 items-center text-white p-2 rounded-lg bg-[#2AD5A5]";
             }}
           >
             <MdDashboard />
@@ -32,8 +32,8 @@ function AdminSidebar() {
             to="/venue"
             className={({ isActive }) => {
               return !isActive
-                ? "font-semibold flex gap-2 items-center hover:bg-green-300 p-2 rounded-lg"
-                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
+                ? "font-semibold flex gap-2 items-center hover:text-white hover:bg-[#2AD5A5] p-2 rounded-lg"
+                : "font-semibold flex gap-2 items-center text-white p-2 rounded-lg bg-[#2AD5A5]";
             }}
           >
             <TbSoccerField />
@@ -44,8 +44,8 @@ function AdminSidebar() {
             to="/reserve"
             className={({ isActive }) => {
               return !isActive
-                ? "font-semibold flex gap-2 items-center hover:bg-green-300 p-2 rounded-lg"
-                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
+                ? "font-semibold flex gap-2 items-center hover:text-white hover:bg-[#2AD5A5] p-2 rounded-lg"
+                : "font-semibold flex gap-2 items-center text-white p-2 rounded-lg bg-[#2AD5A5]";
             }}
           >
             <FaBookmark />
@@ -56,8 +56,8 @@ function AdminSidebar() {
             to="/team"
             className={({ isActive }) => {
               return !isActive
-                ? "font-semibold flex gap-2 items-center hover:bg-green-300 p-2 rounded-lg"
-                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
+                ? "font-semibold flex gap-2 items-center hover:text-white hover:bg-[#2AD5A5] p-2 rounded-lg"
+                : "font-semibold flex gap-2 items-center p-2 text-white rounded-lg bg-[#2AD5A5]";
             }}
           >
             <RiTeamFill />
@@ -68,8 +68,8 @@ function AdminSidebar() {
             to="/user"
             className={({ isActive }) => {
               return !isActive
-                ? "font-semibold flex gap-2 items-center hover:bg-green-300 p-2 rounded-lg"
-                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
+                ? "font-semibold flex gap-2 items-center hover:text-white hover:bg-[#2AD5A5] p-2 rounded-lg"
+                : "font-semibold flex gap-2 items-center text-white p-2 rounded-lg bg-[#2AD5A5]";
             }}
           >
             <FaUser />

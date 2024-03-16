@@ -44,8 +44,8 @@ function VenueForm() {
     <section className="p-10">
       <div className="max-w-4xl mx-auto p-10 flex flex-col items-center gap-10 bg-white">
         <h1 className="text-2xl md:text-4xl font-bold">Add New Venue</h1>
-        <form encType="multipart/form-data" onSubmit={Submit}>
-          <div className="flex flex-col max-w-4xl w-full gap-4">
+        <form encType="multipart/form-data" onSubmit={Submit} className="flex flex-col gap-10 items-center w-full">
+          <div className="flex flex-col w-full gap-4">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="w-full">
                 <Input
