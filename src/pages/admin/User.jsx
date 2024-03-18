@@ -42,15 +42,41 @@ function User() {
   ];
 
   return (
-    <div className="p-10 flex flex-col gap-4">
-      <div className="flex justify-between items-center">
-        <h1 className="font-bold text-2xl">User</h1>
-        <div className="flex gap-4">
-          <Input placeholder={"Search..."} />
+    <div className="p-4 md:p-10 flex flex-col gap-4 md:gap-10">
+      <div className="flex flex-col xl:flex-row xl:justify-between gap-4 md:gap-10">
+        <div className="flex justify-between items-center">
+          <h1 className="font-bold text-4xl">User</h1>
+          {/* <LinkButton toPage="/reservationform" customClass="block xl:hidden">
+            Create Reservation
+          </LinkButton> */}
+        </div>
+        <div className="flex items-center gap-4 xl:hidden">
+          <input
+            type="text"
+            className="w-2/3 rounded-xl py-2 px-4 border-2 focus:outline-none focus:ring focus:border-[#227F4B]"
+            placeholder="Search"
+          />
           <select
             name="category"
             id="category"
-            className="rounded-xl px-4 py-2 border mt-2 focus:outline-none focus:border-[#2AD5A5]"
+            className="w-1/3 rounded-xl px-4 py-2 border-2 focus:outline-none focus:ring focus:border-[#227F4B]"
+          >
+            <option>Veiw By</option>
+            <option value="Today">Today</option>
+            <option value="last 7 Days">Last 7 Days</option>
+          </select>
+        </div>
+        <div className="hidden xl:flex items-center gap-4">
+          {/* <LinkButton toPage="/reservationform">Create Reservation</LinkButton> */}
+          <input
+            type="text"
+            className="rounded-xl py-2 px-4 border-2 focus:outline-none focus:ring focus:border-[#227F4B]"
+            placeholder="Search"
+          />
+          <select
+            name="category"
+            id="category"
+            className="rounded-xl px-4 py-2 border-2 focus:outline-none focus:ring focus:border-[#227F4B]"
           >
             <option value={null}>Veiw By</option>
             <option value="Today">Today</option>

@@ -13,7 +13,7 @@ function AdminSidebar() {
     <aside className="hidden xl:block sticky h-screen top-0 left-0 bottom-0 bg-white border-r-2">
       <div className="w-[230px] p-4 h-screen flex flex-col gap-10">
         <Link to="/" className="w-full flex justify-center">
-          <img src={Logo} alt="Logo" className="w-28" />
+          <img src={Logo} alt="Logo" className="w-36" />
         </Link>
         <div className="flex flex-col text-lg font-semibold gap-4">
           <NavLink
@@ -49,7 +49,7 @@ function AdminSidebar() {
             }}
           >
             <FaBookmark />
-            Reserve
+            Reservation
           </NavLink>
 
           <NavLink

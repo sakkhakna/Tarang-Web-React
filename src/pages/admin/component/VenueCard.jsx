@@ -1,9 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { showSingleVenue } from "../../../service/Venue.api";
-
-function VenueCard({data}) {
-	console.log(data);
+function VenueCard({ data }) {
   // const [data,setData] = useState();
 
   // useEffect(()=>{
@@ -15,18 +10,24 @@ function VenueCard({data}) {
   // },[data])
 
   // console.log(data);
-//   const { data } = useQuery("showVenues", showSingleVenue);
+  //   const { data } = useQuery("showVenues", showSingleVenue);
   return (
     <div className="flex flex-col w-full bg-white border border-gray-200 shadow rounded-xl">
       <div className="w-full h-[150px] bg-[#eaeaea]">
-        {/* <img src="/" alt="photo" className="w-full h-full" /> */}
+        <img
+          src={`https://api.tarang.site/${data.photo}`}
+          alt="photo"
+          className="w-full h-full object-cover rounded-t-xl"
+        />
       </div>
       <div className="flex flex-col p-4 gap-2">
         <div className="flex justify-between">
           <h1 className="font-bold text-lg">Name : {data.name}</h1>
         </div>
-        <h1 className="text-sm font-semibold">Type : {data.sportType.name}</h1>
-        <h1 className="font-semibold text-sm">Size of the Court : {data.size} </h1>
+        <h1 className="text-sm font-semibold">Type : {data.sportTypes.name}</h1>
+        <h1 className="font-semibold text-sm">
+          Size of the Court : {data.size}
+        </h1>
       </div>
     </div>
   );

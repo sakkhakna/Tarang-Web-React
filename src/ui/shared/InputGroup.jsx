@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
 
-function Input({
+function InputGroup({
   title,
   type,
   placeholder,
@@ -57,4 +57,4 @@ function Input({
   );
 }
 
-export default Input;
+export default InputGroup;
