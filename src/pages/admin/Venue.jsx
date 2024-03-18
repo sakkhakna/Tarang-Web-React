@@ -9,7 +9,7 @@ function Venue() {
       <div className='flex justify-between items-center'>
         <h1 className='font-bold text-2xl'>Venue</h1>
         <div className='flex gap-4'>
-            <LinkButton customClass={'mt-2'} toPage='/venueform'>Add Venue</LinkButton>
+            <LinkButton customClass={'mt-2 md:w-52'} toPage='/venueform'>Add Venue</LinkButton>
             <Input 
             placeholder={'Search...'}
             />
