@@ -84,14 +84,8 @@ function User() {
                   <td className="p-2">{data.role}</td>
                   <td className="p-2">
                     <div className="flex gap-2">
-                      <Button
-                        customClass={"bg-white text-black border-black border"}
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        customClass={"bg-white text-black border-black border"}
-                      >
+                      <Button customClass="bg-blue-500 text-white">Edit</Button>
+                      <Button customClass="bg-red-500 text-white">
                         Delete
                       </Button>
                     </div>
@@ -110,14 +104,8 @@ function User() {
                   <td className="p-2">{data.role}</td>
                   <td className="p-2">
                     <div className="flex gap-2">
-                      <Button
-                        customClass={"bg-white text-black border-black border"}
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        customClass={"bg-white text-black border-black border"}
-                      >
+                      <Button customClass="bg-blue-500 text-white">Edit</Button>
+                      <Button customClass="bg-red-500 text-white">
                         Delete
                       </Button>
                     </div>
@@ -129,39 +117,30 @@ function User() {
         </table>
       </div>
       <div className="flex flex-col items-center md:hidden ">
-        {data.map(
-          data =>
-              <div className="flex justify-between gap-4  border border-black p-2">
-                <div className="font-bold flex flex-col gap-4">
-                  <h1>Username</h1>
-                  <h1>Email</h1>
-                  <h1>Phone</h1>
-                  <h1>Role</h1>
-                  <h1>Action</h1>
-                </div>
-                <div className="flex flex-col gap-4 justify-center">
-                  <div className="flex items-center gap-2">
-                    <div className="bg-gray-500 rounded-full h-[30px] w-[30px]"></div>
-                    <h1>{data.username}</h1>
-                  </div>
-                  <h1>{data.email}</h1>
-                  <h1>{data.phone}</h1>
-                  <h1>{data.role}</h1>
-                  <div className="flex gap-2">
-                    <Button
-                      customClass={"bg-white text-black border-black border"}
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      customClass={"bg-white text-black border-black border"}
-                    >
-                      Delete
-                    </Button>
-                  </div>
-                </div>
+        {data.map((data) => (
+          <div className="flex justify-between gap-4  border border-black p-2">
+            <div className="font-bold flex flex-col gap-4">
+              <h1>Username</h1>
+              <h1>Email</h1>
+              <h1>Phone</h1>
+              <h1>Role</h1>
+              <h1>Action</h1>
+            </div>
+            <div className="flex flex-col gap-4 justify-center">
+              <div className="flex items-center gap-2">
+                <div className="bg-gray-500 rounded-full h-[30px] w-[30px]"></div>
+                <h1>{data.username}</h1>
               </div>
-        )}
+              <h1>{data.email}</h1>
+              <h1>{data.phone}</h1>
+              <h1>{data.role}</h1>
+              <div className="flex gap-2">
+                <Button>Edit</Button>
+                <Button>Delete</Button>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

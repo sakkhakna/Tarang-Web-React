@@ -21,6 +21,9 @@ import Badminton from "./pages/user/sport/Badminton";
 import ChallengeForm from "./pages/user/ChallengeForm";
 import JoinForm from "./pages/user/JoinForm";
 import VenueForm from "./pages/admin/VenueForm";
+import Venue from "./pages/user/venue/Venue";
+import SingleVenuePage from "./pages/user/venue/SingleVenue";
+import Otp from "./pages/auth/Otp";
 
 function App() {
   const role = "admin";
@@ -42,16 +45,19 @@ function App() {
           <Route path="/" element={<UserLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/team" element={<Team />} />
-            <Route path="/reservation" element={<ReservationForm />} />
+            <Route path="/venue" element={<Venue />} />
+            <Route path="/venue/:id" element={<SingleVenuePage />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/hosting" element={<HostingForm />} />
             <Route path="/sport" element={<Badminton />} />
+            <Route path="/reservation" element={<ReservationForm />} />
+            <Route path="/hosting" element={<HostingForm />} />
             <Route path="/challenge" element={<ChallengeForm />} />
             <Route path="/join" element={<JoinForm />} />
           </Route>
         )}
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/otp" element={<Otp />} />
       </Routes>
     </Router>
   </QueryClientProvider>
