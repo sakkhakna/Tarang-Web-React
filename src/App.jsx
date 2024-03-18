@@ -1,4 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 import Home from "./pages/user/Home";
 import SignIn from "./pages/auth/SignIn";
 import UserLayout from "./ui/UserLayout";
@@ -22,8 +26,10 @@ import SingleVenuePage from "./pages/user/venue/SingleVenue";
 import Otp from "./pages/auth/Otp";
 
 function App() {
-  const role = "user";
+  const role = "admin";
+  const queryClient = new QueryClient()
   return (
+    <QueryClientProvider client={queryClient}>
     <Router>
       <Routes>
         {role === "admin" ? (
@@ -54,6 +60,8 @@ function App() {
         <Route path="/otp" element={<Otp />} />
       </Routes>
     </Router>
+  </QueryClientProvider>
+    
   );
 }
 
