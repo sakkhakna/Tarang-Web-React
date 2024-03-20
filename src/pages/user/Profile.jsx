@@ -4,7 +4,7 @@ import { FaRegClock, FaRegCalendar } from "react-icons/fa6";
 
 function Profile() {
   return (
-    <div className="my-[25px] w-full">
+    <div className="w-full">
       <div className="flex gap-10">
         <div className="w-1/2 flex flex-col rounded-xl p-6 gap-4 ">
           <div className="w-full flex justify-between">
