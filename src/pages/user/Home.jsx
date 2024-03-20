@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getSportTypes } from "../../service/sport.api";
-import { getVenues } from "../../service/Venue.api";
+import { getVenues } from "../../service/venue.api";
+import { getTeam } from "../../service/team.api";
 import { IoFootballOutline } from "react-icons/io5";
 import { GiShuttlecock } from "react-icons/gi";
 import { TbPingPong } from "react-icons/tb";
@@ -21,7 +22,10 @@ function Home() {
     queryKey: ["getVenuesKey"],
     queryFn: getVenues,
   });
-  console.log(venueData);
+  const { data: teamData } = useQuery({
+    queryKey: ["getTeamKey"],
+    queryFn: getTeam,
+  });
   if (isLoading) {
     return <p>Loading</p>;
   }
@@ -33,7 +37,7 @@ function Home() {
     <TbPingPong className="w-10 h-10" />,
   ];
   return (
-    <div className="flex flex-col gap-10 p-10 xl:px-0">
+    <div className="flex flex-col gap-10 p-4 xl:px-0 xl:py-10">
       <div className="bg-[#d9d9d9] max-w-7xl h-[300px] flex justify-center items-center">
         <LinkButton toPage="/reservation">Reserve Your Venue Now</LinkButton>
       </div>
@@ -51,7 +55,7 @@ function Home() {
             {sportTypeData.data.map((sport, index) => (
               <Link
                 key={index}
-                to={`/sport/${sport.name}`}
+                to={`/sport/${sport.name}/${sport.id}`}
                 className="flex gap-4 justify-center items-center p-4 w-full bg-white border border-gray-200 shadow rounded-xl"
               >
                 {sportIcons[index]}
@@ -63,7 +67,7 @@ function Home() {
           </div>
         ) : (
           <div>
-            <h2 className="text-2xl font-bold p-10">Not Sport Found</h2>
+            <h2 className="text-2xl font-bold p-10">No Sport</h2>
           </div>
         )}
       </div>
@@ -85,8 +89,8 @@ function Home() {
             ))}
           </div>
         ) : (
-          <div>
-            <h2 className="text-2xl font-bold p-10">Not Sport Found</h2>
+          <div className="flex justify-center">
+            <h2 className="text-2xl font-bold p-10">No Venue</h2>
           </div>
         )}
       </div>
@@ -101,11 +105,17 @@ function Home() {
             <FaArrowRight className="w-5 h-5" />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <TeamCard />
-          <TeamCard />
-          <TeamCard />
-        </div>
+        {teamData ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {teamData.data.map((team, index) => (
+              <TeamCard key={index} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex justify-center">
+            <h2 className="text-2xl font-bold p-10">No Team</h2>
+          </div>
+        )}
       </div>
       <div className="flex flex-col gap-10">
         <div className="flex justify-between items-center">

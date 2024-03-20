@@ -2,7 +2,7 @@ import { FaRegCheckCircle } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
 import LinkButton from "../shared/LinkButton";
 
-function TeamCard() {
+function TeamCard({ team }) {
   return (
     <div className="w-full bg-white border border-gray-200 shadow rounded-xl">
       <div className="p-4 flex flex-col items-center gap-4 relative">
@@ -12,11 +12,10 @@ function TeamCard() {
           <span className="text-center px-4 bg-red-500 rounded-t-lg">SEP</span>
           <span className="text-center px-4 bg-[#eaeaea] rounded-b-lg">30</span>
         </div>
-        
       </div>
       <div className="p-4 flex flex-col gap-4">
-      <div className="flex items-center gap-2">
-        <IoMdTime className="w-[20px] h-[20px]"/>
+        <div className="flex items-center gap-2">
+          <IoMdTime className="w-[20px] h-[20px]" />
           <h1>Time</h1>
         </div>
         <div className="flex items-center gap-2">

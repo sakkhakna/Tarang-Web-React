@@ -1,14 +1,12 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { showSingleVenue } from "../../../service/Venue.api";
+import { showSingleVenue } from "../../../service/venue.api";
+import { IoMdCheckmark } from "react-icons/io";
+import { GiTennisCourt } from "react-icons/gi";
 import Button from "../../../ui/shared/Button";
 import Modal from "../../../ui/shared/Modal";
 import Reservation from "../../user/ReservationForm";
-import { IoMdCheckmark } from "react-icons/io";
-import { GiTennisCourt } from "react-icons/gi";
-import { useParams } from "react-router-dom";
-// import Input from "../../../ui/shared/Input";
-// import { FaTelegramPlane } from "react-icons/fa";
 
 function SingleVenuePage() {
   const { venueId } = useParams();
@@ -85,49 +83,6 @@ function SingleVenuePage() {
               </div>
             </div>
           </div>
-          {/* <div className="flex flex-col gap-4 w-1/3">
-        <Button customClass="w-full">Book</Button>
-        <div className="w-full p-10 flex flex-col gap-10 bg-white">
-          <h1 className="text-xl font-bold">Contact Manager</h1>
-          <div className="w-full">
-            <div className="flex flex-col gap-4">
-              <Input
-                customClass="w-[300px]"
-                type="text"
-                placeholder="Enter Your Name"
-                title="Name :"
-              />
-              <Input
-                customClass="w-[300px]"
-                type="email"
-                placeholder="Enter Your Email"
-                title="Email :"
-              />
-              <Input
-                customClass="w-[300px]"
-                type="text"
-                placeholder="Enter Your Phone Number"
-                title="Phone :"
-              />
-              <div className="flex flex-col gap-2">
-                <label htmlFor="#">Message :</label>
-                <textarea
-                  className="border-2 p-4 rounded-xl"
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="5"
-                  placeholder="Enter Your Message"
-                ></textarea>
-              </div>
-              <Button customClass="w-full flex justify-center gap-4 md:w-full">
-                <FaTelegramPlane className="w-[20px] h-[20px]" />
-                <h1>Sent Message</h1>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div> */}
         </div>
       )}
     </>

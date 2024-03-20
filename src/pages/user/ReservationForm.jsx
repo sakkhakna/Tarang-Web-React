@@ -10,7 +10,7 @@ function ReservationForm({ venueId, handleModal }) {
     date: "",
     start_time: "",
     end_time: "",
-    venue_id: venueId,
+    venue_id: parseInt(venueId),
   });
   console.log(inputData);
   const onChange = (e) => {

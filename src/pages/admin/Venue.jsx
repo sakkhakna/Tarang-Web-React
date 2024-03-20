@@ -1,4 +1,4 @@
-import { getVenues } from "../../service/Venue.api";
+import { getVenues } from "../../service/venue.api";
 import VenueCard from "../admin/component/VenueCard";
 import LinkButton from "../../ui/shared/LinkButton";
 import { useQuery } from "@tanstack/react-query";

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 function VenueCard({ venue }) {
-  console.log(venue);
   return (
     <Link
       to={`/venue/${venue.id}`}

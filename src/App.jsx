@@ -14,16 +14,13 @@ import Team from "./pages/user/Team";
 import ReservationForm from "./pages/user/ReservationForm";
 import Profile from "./pages/user/Profile";
 import HostingForm from "./pages/user/HostingForm";
-import Badminton from "./pages/user/sport/Badminton";
-import Football from "./pages/user/sport/Football";
-import PingPong from "./pages/user/sport/Pingpong";
-import Volleyball from "./pages/user/sport/Volleyball";
 import ChallengeForm from "./pages/user/ChallengeForm";
 import JoinForm from "./pages/user/JoinForm";
 import VenueForm from "./pages/admin/VenueForm";
 import Venue from "./pages/user/venue/Venue";
 import SingleVenuePage from "./pages/user/venue/SingleVenue";
 import Otp from "./pages/auth/Otp";
+import Sport from "./pages/user/Sport";
 
 function App() {
   const role = "user";
@@ -48,10 +45,7 @@ function App() {
               <Route path="/venue" element={<Venue />} />
               <Route path="/venue/:venueId" element={<SingleVenuePage />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/sport/football" element={<Football />} />
-              <Route path="/sport/badminton" element={<Badminton />} />
-              <Route path="/sport/pingpong" element={<PingPong />} />
-              <Route path="/sport/volleyball" element={<Volleyball />} />
+              <Route path="/sport/:sportName/:sportId" element={<Sport />} />
               <Route path="/reservation" element={<ReservationForm />} />
               <Route path="/hosting" element={<HostingForm />} />
               <Route path="/challenge" element={<ChallengeForm />} />
