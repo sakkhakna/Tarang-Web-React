@@ -46,50 +46,89 @@ export default function AdminReservationForm() {
               </div>
             </div>
             <div className="flex w-full gap-4">
-              <div>
+              <div className="w-1/3">
                 <Input
-                  type="text"
-                  title="Name"
+                  type="date"
+                  title="Match Date"
                   id={"name"}
                   onChange={onChange}
                 />
               </div>
-              <div>
+              <div className="w-1/3">
                 <Input
-                  type="text"
-                  title="Name"
+                  type="time"
+                  title="Start Match"
                   id={"name"}
                   onChange={onChange}
                 />
               </div>
-              <div>
+              <div className="w-1/3">
+                <Input
+                  type="time"
+                  title="End Match"
+                  id={"name"}
+                  onChange={onChange}
+                />
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="w-full">
                 <Input
                   type="text"
-                  title="Name"
-                  id={"name"}
+                  title="Phone Number"
+                  id={"phone"}
+                  onChange={onChange}
+                />
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="w-full">
+                <Input
+                  type="text"
+                  title="Optional"
+                  id={"phone"}
+                  onChange={onChange}
+                />
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="w-full">
+                <Input
+                  type="text"
+                  title="Team Name"
+                  id={"team_name"}
                   onChange={onChange}
                 />
               </div>
             </div>
             <div className="w-full flex flex-col gap-2">
-              <label className="text-sm md:text-base" htmlFor="#">
-                Comment
+              <label className="text-sm md:text-base" htmlFor="description">
+                Description
               </label>
               <textarea
                 onChange={onChange}
-                name="Comment"
+                name="Description"
                 id="description"
                 rows="5"
                 className="px-4 py-2 rounded-2xl border focus:outline-none focus:ring focus:border-[#2AD5A5]"
               ></textarea>
-            </div>
-            <div>
-              <Input
-                type="file"
-                title={"image"}
-                id={"photo"}
-                onChange={onChange}
-              />
+              <div className="flex flex-col w-full gap-2">
+                <label htmlFor="category" className="text-sm md:text-base">
+                  Venue Type:
+                </label>
+                <select
+                  onChange={onChange}
+                  name="venue_type"
+                  id="venue_type"
+                  className="rounded-xl w-full px-4 py-2 border focus:outline-none focus:border-[#2AD5A5]"
+                >
+                  <option value={null}>Select</option>
+                  <option value="1">Tarang A</option>
+                  <option value="2">Tarang B</option>
+                  <option value="3">Tarang C</option>
+                  <option value="4">Tarang D</option>
+                </select>
+              </div>
             </div>
           </div>
           <div className="flex gap-4 w-full justify-end">
