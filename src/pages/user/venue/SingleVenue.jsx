@@ -42,42 +42,48 @@ function SingleVenuePage() {
               </div>
             </div>
             <div className="flex flex-col xl:flex-row gap-4 xl:gap-10">
-              <div className="flex flex-col bg-white justify-center p-4 md:p-10 gap-10 w-full xl:w-1/2">
-                <h1 className="font-bold text-2xl">Description and details</h1>
-                <div className="flex flex-col gap-4 text-2xl">
-                  <div className="flex gap-4 justify-center items-center">
-                    <GiTennisCourt />
-                    <h1 className="font-bold text-2xl text-blue-500">
-                      {data.data.size} Players
-                    </h1>
-                  </div>
-                  <div className="text-sm md:text-base">
-                    <p>{data.data.description}</p>
+              <div>
+                <div className="flex flex-col bg-white justify-center p-4 md:p-10 gap-10 w-full xl:w-1/2">
+                  <h1 className="font-bold text-2xl">
+                    Description and details
+                  </h1>
+                  <div className="flex flex-col gap-4 text-2xl">
+                    <div className="flex gap-4 justify-center items-center">
+                      <GiTennisCourt />
+                      <h1 className="font-bold text-2xl text-blue-500">
+                        {data.data.size} Players
+                      </h1>
+                    </div>
+                    <div className="text-sm md:text-base">
+                      <p>{data.data.description}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-10 bg-white p-4 md:p-10 w-full xl:w-1/2">
-                <h1 className="font-bold text-2xl">Amenities</h1>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  <div className="flex gap-2">
-                    <IoMdCheckmark className="w-[20px] h-[20px]" />
-                    <h1 className="text-sm md:text-base">Parking</h1>
-                  </div>
-                  <div className="flex gap-2">
-                    <IoMdCheckmark className="w-[20px] h-[20px]" />
-                    <h1 className="text-sm md:text-base">Drinking Water</h1>
-                  </div>
-                  <div className="flex gap-2">
-                    <IoMdCheckmark className="w-[20px] h-[20px]" />
-                    <h1 className="text-sm md:text-base">First Aid</h1>
-                  </div>
-                  <div className="flex gap-2">
-                    <IoMdCheckmark className="w-[20px] h-[20px]" />
-                    <h1 className="text-sm md:text-base">Rest Room</h1>
-                  </div>
-                  <div className="flex gap-2">
-                    <IoMdCheckmark className="w-[20px] h-[20px]" />
-                    <h1 className="text-sm md:text-base">Change Room</h1>
+              <div>
+                <div className="flex flex-col gap-10 bg-white p-4 md:p-10 w-full xl:w-1/2">
+                  <h1 className="font-bold text-2xl">Amenities</h1>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="flex gap-2">
+                      <IoMdCheckmark className="w-[20px] h-[20px]" />
+                      <h1 className="text-sm md:text-base">Parking</h1>
+                    </div>
+                    <div className="flex gap-2">
+                      <IoMdCheckmark className="w-[20px] h-[20px]" />
+                      <h1 className="text-sm md:text-base">Drinking Water</h1>
+                    </div>
+                    <div className="flex gap-2">
+                      <IoMdCheckmark className="w-[20px] h-[20px]" />
+                      <h1 className="text-sm md:text-base">First Aid</h1>
+                    </div>
+                    <div className="flex gap-2">
+                      <IoMdCheckmark className="w-[20px] h-[20px]" />
+                      <h1 className="text-sm md:text-base">Rest Room</h1>
+                    </div>
+                    <div className="flex gap-2">
+                      <IoMdCheckmark className="w-[20px] h-[20px]" />
+                      <h1 className="text-sm md:text-base">Change Room</h1>
+                    </div>
                   </div>
                 </div>
               </div>

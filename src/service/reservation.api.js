@@ -12,7 +12,6 @@ export const createReservation = async (reservation) => {
         },
       }
     );
-    console.log(res);
     return res;
   } catch (error) {
     console.log(error);

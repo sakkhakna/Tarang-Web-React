@@ -1,21 +1,21 @@
 import axios from "axios";
 
 export const createVenue = async (venue) => {
-  console.log(venue);
   try {
     const res = await axios.post("https://api.tarang.site/api/venues", venue, {
       headers: { "content-type": "multipart/form-data" },
     });
-    console.log(res);
+    return res;
   } catch (error) {
     console.log(error);
+    return null;
   }
 };
 
 export const getVenues = async () => {
   try {
     const res = await axios.get("https://api.tarang.site/api/venues", {
-      headers: { "content-type": "multipart/form-data" },
+      headers: { "content-type": "application/json" },
     });
     const data = res.data;
     return data;
@@ -26,15 +26,13 @@ export const getVenues = async () => {
 };
 
 export const showSingleVenue = async (id) => {
-  const options = {
-    method: "GET",
-    url: `https://api.tarang.site/api/venues/${id}`,
-    headers: { "content-type": "application/json" },
-  };
   try {
-    const { data } = await axios.request(options);
-    return data;
+    const res = await axios.get(`https://api.tarang.site/api/venues/${id}`, {
+      headers: { "content-type": "application/json" },
+    });
+    return res.data;
   } catch (error) {
-    console.error(error);
+    console.log(error);
+    return null;
   }
 };

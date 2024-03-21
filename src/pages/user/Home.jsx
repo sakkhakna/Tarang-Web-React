@@ -14,21 +14,18 @@ import TeamCard from "../../ui/component/TeamCard";
 import LinkButton from "../../ui/shared/LinkButton";
 
 function Home() {
-  const { data: sportTypeData, isLoading } = useQuery({
+  const { data: sportTypeData, isLoading: sportTypeLoading } = useQuery({
     queryKey: ["getSportTypesKey"],
     queryFn: getSportTypes,
   });
-  const { data: venueData } = useQuery({
+  const { data: venueData, isLoading: venueDataLoading } = useQuery({
     queryKey: ["getVenuesKey"],
     queryFn: getVenues,
   });
-  const { data: teamData } = useQuery({
+  const { data: teamData, isLoading: teamDataLoading } = useQuery({
     queryKey: ["getTeamKey"],
     queryFn: getTeam,
   });
-  if (isLoading) {
-    return <p>Loading</p>;
-  }
   const sportIcons = [
     <IoFootballOutline className="w-10 h-10" />,
     <GiShuttlecock className="w-10 h-10" />,
@@ -50,13 +47,13 @@ function Home() {
         <h1 className="font-bold text-center text-2xl md:text-4xl">
           Chose From your Favorite Sport
         </h1>
-        {!isLoading && sportTypeData ? (
-          <div className="max-w-[1120px] grid grid-cols-5 gap-10">
+        {!sportTypeLoading && sportTypeData ? (
+          <div className="max-w-[1120px] flex flex-wrap justify-center gap-10">
             {sportTypeData.data.map((sport, index) => (
               <Link
                 key={index}
                 to={`/sport/${sport.name}/${sport.id}`}
-                className="flex gap-4 justify-center items-center p-4 w-full bg-white border border-gray-200 shadow rounded-xl"
+                className="flex gap-4 justify-center items-center p-4 bg-white border border-gray-200 shadow rounded-xl"
               >
                 {sportIcons[index]}
                 <p className="hidden md:block text-2xl font-bold">
@@ -82,7 +79,7 @@ function Home() {
             <FaArrowRight className="w-5 h-5" />
           </Link>
         </div>
-        {!isLoading && venueData ? (
+        {!venueDataLoading && venueData && venueData.data.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {venueData.data.map((venue, index) => (
               <VenueCard key={index} venue={venue} />
@@ -105,7 +102,7 @@ function Home() {
             <FaArrowRight className="w-5 h-5" />
           </Link>
         </div>
-        {teamData ? (
+        {!teamDataLoading && teamData && teamData.data.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {teamData.data.map((team, index) => (
               <TeamCard key={index} />
