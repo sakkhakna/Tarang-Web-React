@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "../../ui/shared/Button";
-import Input from "../../ui/shared/Input";
 
 function User() {
   const data = [

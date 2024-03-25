@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+
 function VenueCard({ data }) {
+
   // const [data,setData] = useState();
 
   // useEffect(()=>{
@@ -12,7 +15,9 @@ function VenueCard({ data }) {
   // console.log(data);
   //   const { data } = useQuery("showVenues", showSingleVenue);
   return (
-    <div className="flex flex-col w-full bg-white border border-gray-200 shadow rounded-xl">
+    <Link
+    to={`/venue/${data.id}`} 
+    className="flex flex-col w-full bg-white border border-gray-200 shadow rounded-xl"> 
       <div className="w-full h-[150px] bg-[#eaeaea]">
         <img
           src={`https://api.tarang.site/${data.photo}`}
@@ -29,7 +34,7 @@ function VenueCard({ data }) {
           Size of the Court : {data.size}
         </h1>
       </div>
-    </div>
+      </Link > 
   );
 }
 

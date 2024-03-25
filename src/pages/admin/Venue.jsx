@@ -1,7 +1,7 @@
 import { getVenues } from "../../service/Venue.api";
 import VenueCard from "../admin/component/VenueCard";
 import LinkButton from "../../ui/shared/LinkButton";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";  
 
 function Venue() {
   const { data, isLoading } = useQuery({
@@ -55,7 +55,7 @@ function Venue() {
         </div>
       </div>
       <div className="flex gap-4 md:gap-10">
-        <div className="w-full md:w-1/2 grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-10">
+      <div className="w-full md:w-1/2 grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-10">
           {!isLoading &&
             data &&
             data.data

@@ -23,6 +23,7 @@ import JoinForm from "./pages/user/JoinForm";
 import VenueForm from "./pages/admin/VenueForm";
 import Venue from "./pages/user/venue/Venue";
 import SingleVenuePage from "./pages/user/venue/SingleVenue";
+import DetailVenue from "./pages/admin/component/DetailVenue";
 import Otp from "./pages/auth/Otp";
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
             <Route path="/reserve" element={<AdminReservation />} />
             <Route path="/user" element={<User />} />
             <Route path="/venueform" element={<VenueForm />} />
+            <Route path="/venue/:id" element={<DetailVenue />} />
           </Route>
         ) : (
           <Route path="/" element={<UserLayout />}>
