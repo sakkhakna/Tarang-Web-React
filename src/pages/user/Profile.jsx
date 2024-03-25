@@ -39,9 +39,9 @@ function Profile() {
     setSelectedSection(section);
   };
   return (
-    <section className="p-4 xl:px-0 xl:py-10">
-      <div className="hidden lg:flex gap-4 xl:gap-10">
-        <aside className="w-full lg:w-1/5">
+    <section className="p-4 md:p-10">
+      <div className="hidden lg:flex gap-4 md:gap-10">
+        <aside className="w-full md:w-1/5">
           <ul className="flex flex-col gap-4 font-semibold border border-gray-200 bg-white shadow p-10 rounded-xl">
             <li className="text-xl">
               <button
@@ -77,7 +77,7 @@ function Profile() {
             </li>
           </ul>
         </aside>
-        <div className="w-full lg:w-4/5 flex flex-col gap-4">
+        <div className="w-full md:w-4/5 flex flex-col gap-4">
           {selectedSection === "profile" && <ProfileSection />}
           {selectedSection === "reservation" && (
             <ReservationSection title={"Reservation"} />
@@ -88,7 +88,7 @@ function Profile() {
           {selectedSection === "team" && <TeamSection />}
         </div>
       </div>
-      <div className="flex flex-col lg:hidden gap-4">
+      <div className="flex flex-col lg:hidden gap-4 md:gap-10">
         <ProfileSection />
         <ReservationSection title={"Reservation"} />
         <ReservationSection title={"Reservation History"} />

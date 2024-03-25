@@ -1,8 +1,25 @@
+import { useState, useEffect, useContext } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getUser } from "../../service/user.api";
+import AppContext from "../../contexts/AppContext";
 import Input from "../shared/Input";
 import Button from "../shared/Button";
 import ProfileAvatar from "./ProfileAvatar";
 
 function ProfileSection() {
+  const { dispatch, userData } = useContext(AppContext);
+  const { data } = useQuery({
+    queryKey: ["getUsers"],
+    queryFn: getUser,
+  });
+  useEffect(() => {
+    dispatch({ type: "SET_USER_DATA", payload: data });
+  }, [data]);
+  const [inputData, setInputData] = useState({
+    name: userData ? userData.user.name : data.user.name,
+    phone: userData ? userData.user.phone : data.user.phone,
+    photo: userData ? userData.user.photo : data.user.photo,
+  });
   return (
     <section className="w-full border border-gray-200 bg-white shadow p-4 md:p-10 rounded-xl">
       <div className="flex justify-between items-center mb-4">
@@ -43,7 +60,7 @@ function ProfileSection() {
             className="outline-none text-lg"
             // disabled={editMode}
             // onChange={onChange}
-            // value={username}
+            value={inputData.name}
           />
           <Input
             title="Email"

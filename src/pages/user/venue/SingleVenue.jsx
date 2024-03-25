@@ -30,8 +30,8 @@ function SingleVenuePage() {
         </Modal>
       )}
       {!isLoading && data && (
-        <div className="max-w-7xl flex gap-4 xl:gap-10 p-4 xl:px-0 xl:py-10">
-          <div className="flex flex-col gap-4 xl:gap-10 w-full">
+        <div className="max-w-7xl flex gap-4 md:gap-10 p-4 md:p-10">
+          <div className="flex flex-col gap-4 md:gap-10 w-full">
             <div className="flex justify-between items-center gap-4 bg-white p-4 md:p-10">
               <div>
                 <h2>{data.sportTypes.name}</h2>
@@ -43,9 +43,9 @@ function SingleVenuePage() {
                 </Button>
               </div>
             </div>
-            <div className="flex flex-col xl:flex-row gap-4 xl:gap-10">
+            <div className="flex flex-col xl:flex-row gap-4 md:gap-10">
               <div className="w-full xl:w-1/2">
-                <div className="flex flex-col bg-white justify-center p-4 md:p-10 gap-10">
+                <div className="flex flex-col bg-white justify-center p-4 md:p-10 gap-4 md:gap-10">
                   <h1 className="font-bold text-2xl">
                     Description and details
                   </h1>
@@ -63,7 +63,7 @@ function SingleVenuePage() {
                 </div>
               </div>
               <div className="w-full xl:w-1/2">
-                <div className="flex flex-col gap-10 bg-white p-4 md:p-10">
+                <div className="flex flex-col gap-4 md:gap-10 bg-white p-4 md:p-10">
                   <h1 className="font-bold text-2xl">Amenities</h1>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div className="flex gap-2">
