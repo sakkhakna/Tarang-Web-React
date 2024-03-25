@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import Logo from "../../assets/img/logo_latin.png";
 import Button from "../../ui/shared/Button";
 import { useTranslation } from "react-i18next";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 
 function Otp() {
   const onChange = (e) => {
@@ -67,7 +73,22 @@ function Otp() {
             </h1>
             <div className="flex flex-col items-center gap-4">
               <h1 className="text-xl">Verification Code</h1>
-              <div className="flex justify-center gap-2">
+              <div>
+                <InputOTP maxLength={6}>
+                  <InputOTPGroup>
+                    <InputOTPSlot index={0} />
+                    <InputOTPSlot index={1} />
+                    <InputOTPSlot index={2} />
+                  </InputOTPGroup>
+                  <InputOTPSeparator />
+                  <InputOTPGroup>
+                    <InputOTPSlot index={3} />
+                    <InputOTPSlot index={4} />
+                    <InputOTPSlot index={5} />
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
+              {/* <div className="flex justify-center gap-2">
                 {otp.map((data, index) => {
                   return (
                     <input
@@ -83,7 +104,7 @@ function Otp() {
                     />
                   );
                 })}
-              </div>
+              </div> */}
               {timeLeft == 0 ? (
                 <button
                   className="hover:text-blue-500"
@@ -98,8 +119,10 @@ function Otp() {
               )}
             </div>
             <div className="flex gap-4">
-            <Button customClass={'md:w-full'} >Back</Button>
-            <Button customClass={'md:w-full'} type="submit">Verify</Button>
+              <Button customClass={"md:w-full"}>Back</Button>
+              <Button customClass={"md:w-full"} type="submit">
+                Verify
+              </Button>
             </div>
           </form>
         </div>
