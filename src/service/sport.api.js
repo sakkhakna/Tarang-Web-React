@@ -27,10 +27,11 @@ export const createSportType = async (sport) => {
 	}
 };
 
-export const updateSportType = async (sportId) => {
+export const updateSportType = async (sportId, updatedType) => {
 	try {
 		const res = await axios.put(
 			`https://api.tarang.site/api/sport-types/${sportId}`,
+			updatedType,
 			{
 				headers: {
 					"Content-Type": "application/json",

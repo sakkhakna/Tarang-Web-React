@@ -4,36 +4,54 @@ import {
 	createSportType,
 	deleteSportType,
 	getSportTypes,
+	updateSportType,
 } from "../../service/sport.api";
 import { useState } from "react";
 import Modal from "../../ui/shared/Modal";
 import Input from "../../ui/shared/Input";
 
-function SportType() {
+function SportType({ actionType }) {
 	const { data: sportTypeData, isLoading } = useQuery({
 		queryKey: ["getSportTypesKey"],
 		queryFn: getSportTypes,
 	});
 	const [inputData, setInputData] = useState({
-		name: "",
+		name: sportTypeData ? sportTypeData.name : "",
 	});
+	// const [sportTypeName, setSportTypeName] = useState(
+	// 	sportTypeData && sportTypeData.data ? sportTypeData.data.name : "hello"
+	// );
+	console.log(sportTypeData);
 	const [openModal, setOpenModal] = useState(false);
 	const handleModel = (state) => {
 		setOpenModal(state);
 	};
 	const onChange = (e) => {
 		e.preventDefault();
-		setInputData((prevState) => ({
-			...prevState,
-			[e.target.id]: e.target.value,
-		}));
+		// setInputData((prevState) => ({
+		// 	...prevState,
+		// 	[e.target.id]: e.target.value,
+		// }));
+		setInputData(e.target.value);
 	};
-	const onSubmit = async (e) => {
-		e.preventDefault();
-		const formData = new FormData();
-		formData.append("name", inputData.name);
-		createSportType(formData);
-	};
+	// const onSubmit = async (e) => {
+	// 	e.preventDefault();
+	// 	const formData = new FormData();
+	// 	formData.append("name", inputData.name);
+	// 	createSportType(formData);
+	// };
+	let onClick = null;
+	switch (actionType) {
+		case "handleAddSport":
+			onClick = async () => {
+				const formData = new FormData();
+				formData.append("name", inputData);
+				await createSportType(formData);
+			};
+			break;
+		case "handleUpdateSport":
+			onClick = async () => await updateSportType();
+	}
 
 	if (isLoading) {
 		return <p>Loading</p>;
@@ -43,19 +61,10 @@ function SportType() {
 		<>
 			{openModal && (
 				<Modal handleModal={handleModel}>
-					<form
-						encType="multipart/form-data"
-						onSubmit={onSubmit}
-						className="flex flex-col gap-4"
-					>
+					<form encType="multipart/form-data" className="flex flex-col gap-4">
 						<h1 className="font-bold text-2xl">New Sport Type</h1>
-						<Input
-							id="name"
-							type="text"
-							placeholder="New Sport"
-							onChange={onChange}
-						/>
-						<Button type="submit">Add</Button>
+						<Input type="text" placeholder="New Sport" onChange={onChange} />
+						<Button onClick={onClick}>Add</Button>
 					</form>
 				</Modal>
 			)}
