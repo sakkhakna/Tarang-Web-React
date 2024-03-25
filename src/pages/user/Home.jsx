@@ -49,7 +49,7 @@ function Home() {
         </h1>
         {!sportTypeLoading && sportTypeData ? (
           <div className="max-w-[1120px] flex flex-wrap justify-center gap-10">
-            {sportTypeData.data.map((sport, index) => (
+            {sportTypeData.map((sport, index) => (
               <Link
                 key={index}
                 to={`/sport/${sport.name}/${sport.id}`}
@@ -79,9 +79,9 @@ function Home() {
             <FaArrowRight className="w-5 h-5" />
           </Link>
         </div>
-        {!venueDataLoading && venueData && venueData.data.length > 0 ? (
+        {!venueDataLoading && venueData && venueData.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {venueData.data.map((venue, index) => (
+            {venueData.map((venue, index) => (
               <VenueCard key={index} venue={venue} />
             ))}
           </div>
@@ -102,9 +102,9 @@ function Home() {
             <FaArrowRight className="w-5 h-5" />
           </Link>
         </div>
-        {!teamDataLoading && teamData && teamData.data.length > 0 ? (
+        {!teamDataLoading && teamData && teamData.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {teamData.data.map((team, index) => (
+            {teamData.map((team, index) => (
               <TeamCard key={index} />
             ))}
           </div>

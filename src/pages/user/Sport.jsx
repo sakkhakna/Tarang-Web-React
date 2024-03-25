@@ -16,18 +16,20 @@ function Sport() {
     queryKey: ["getTeamKey"],
     queryFn: getTeam,
   });
+  console.log(teamData);
   let filteredVenueData = [];
   let filteredTeamData = [];
   if (!isLoading && venueData) {
-    filteredVenueData = venueData.data.filter((venue) => {
+    filteredVenueData = venueData.filter((venue) => {
       return venue.sportTypes.id === parseInt(sportId);
     });
   }
   if (teamData) {
-    filteredTeamData = teamData.data.filter((team) => {
-      return team.sportTypes.id === parseInt(sportId);
+    filteredTeamData = teamData.filter((team) => {
+      return team.sportType.id === parseInt(sportId);
     });
   }
+  console.log(venueData);
   return (
     <div className="max-w-7xl mx-auto flex flex-col gap-4 xl:gap-10 items-center p-4 xl:px-0 xl:py-10">
       <BannerFilter />

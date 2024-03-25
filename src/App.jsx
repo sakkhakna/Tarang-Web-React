@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AppContext from "./contexts/AppContext";
 import Home from "./pages/user/Home";
 import SignIn from "./pages/auth/SignIn";
 import UserLayout from "./ui/UserLayout";
@@ -23,6 +25,7 @@ import Otp from "./pages/auth/Otp";
 import Sport from "./pages/user/Sport";
 
 function App() {
+  const { dispatch, user } = useContext(AppContext);
   const role = "user";
   const queryClient = new QueryClient();
   return (

@@ -6,7 +6,7 @@ import { IoMdCheckmark } from "react-icons/io";
 import { GiTennisCourt } from "react-icons/gi";
 import Button from "../../../ui/shared/Button";
 import Modal from "../../../ui/shared/Modal";
-import Reservation from "../../user/ReservationForm";
+import ReservationForm from "../../user/ReservationForm";
 
 function SingleVenuePage() {
   const { venueId } = useParams();
@@ -22,7 +22,11 @@ function SingleVenuePage() {
     <>
       {openModal && (
         <Modal handleModal={handleModal}>
-          <Reservation venueId={venueId} handleModal={handleModal} />
+          <ReservationForm
+            venueId={venueId}
+            sportTypeId={data.sportTypes.id}
+            handleModal={handleModal}
+          />
         </Modal>
       )}
       {!isLoading && data && (
@@ -30,10 +34,8 @@ function SingleVenuePage() {
           <div className="flex flex-col gap-4 xl:gap-10 w-full">
             <div className="flex justify-between items-center gap-4 bg-white p-4 md:p-10">
               <div>
-                <h2>{data.data.sportTypes.name}</h2>
-                <h1 className="text-2xl md:text-4xl font-bold">
-                  {data.data.name}
-                </h1>
+                <h2>{data.sportTypes.name}</h2>
+                <h1 className="text-2xl md:text-4xl font-bold">{data.name}</h1>
               </div>
               <div>
                 <Button onClick={() => handleModal(!openModal)}>
@@ -42,8 +44,8 @@ function SingleVenuePage() {
               </div>
             </div>
             <div className="flex flex-col xl:flex-row gap-4 xl:gap-10">
-              <div>
-                <div className="flex flex-col bg-white justify-center p-4 md:p-10 gap-10 w-full xl:w-1/2">
+              <div className="w-full xl:w-1/2">
+                <div className="flex flex-col bg-white justify-center p-4 md:p-10 gap-10">
                   <h1 className="font-bold text-2xl">
                     Description and details
                   </h1>
@@ -51,17 +53,17 @@ function SingleVenuePage() {
                     <div className="flex gap-4 justify-center items-center">
                       <GiTennisCourt />
                       <h1 className="font-bold text-2xl text-blue-500">
-                        {data.data.size} Players
+                        {data.size} Players
                       </h1>
                     </div>
                     <div className="text-sm md:text-base">
-                      <p>{data.data.description}</p>
+                      <p>{data.description}</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div>
-                <div className="flex flex-col gap-10 bg-white p-4 md:p-10 w-full xl:w-1/2">
+              <div className="w-full xl:w-1/2">
+                <div className="flex flex-col gap-10 bg-white p-4 md:p-10">
                   <h1 className="font-bold text-2xl">Amenities</h1>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div className="flex gap-2">
