@@ -47,7 +47,7 @@ function Home() {
         <h1 className="font-bold text-center text-2xl md:text-4xl">
           Chose From your Favorite Sport
         </h1>
-        {!sportTypeLoading && sportTypeData ? (
+        {!sportTypeLoading && sportTypeData && sportTypeData.length > 0 ? (
           <div className="max-w-[1120px] flex flex-wrap justify-center gap-4 md:gap-10">
             {sportTypeData.map((sport, index) => (
               <Link
