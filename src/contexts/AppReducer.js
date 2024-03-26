@@ -3,7 +3,7 @@ const AppReducer = (state, action) => {
     case "SET_USER_DATA":
       return {
         ...state,
-        user: action.payload,
+        userData: action.payload,
       };
     default:
       return state;

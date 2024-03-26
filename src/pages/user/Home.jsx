@@ -34,21 +34,21 @@ function Home() {
     <TbPingPong className="w-10 h-10" />,
   ];
   return (
-    <div className="flex flex-col gap-10 p-4 xl:px-0 xl:py-10">
+    <section className="flex flex-col gap-4 md:gap-10 p-4 md:p-10">
       <div className="bg-[#d9d9d9] max-w-7xl h-[300px] flex justify-center items-center">
         <LinkButton toPage="/reservation">Reserve Your Venue Now</LinkButton>
       </div>
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-10">
+      {/* <div className="grid grid-cols-1 xl:grid-cols-3 gap-10">
         <div className="bg-[#d9d9d9] w-full h-[200px]"></div>
         <div className="bg-[#d9d9d9] w-full h-[200px]"></div>
         <div className="bg-[#d9d9d9] w-full h-[200px]"></div>
-      </div>
-      <div className="flex flex-col gap-10 items-center">
+      </div> */}
+      <div className="flex flex-col gap-4 md:gap-10 items-center">
         <h1 className="font-bold text-center text-2xl md:text-4xl">
           Chose From your Favorite Sport
         </h1>
         {!sportTypeLoading && sportTypeData ? (
-          <div className="max-w-[1120px] flex flex-wrap justify-center gap-10">
+          <div className="max-w-[1120px] flex flex-wrap justify-center gap-4 md:gap-10">
             {sportTypeData.map((sport, index) => (
               <Link
                 key={index}
@@ -68,7 +68,7 @@ function Home() {
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-4 md:gap-10">
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-2xl md:text-4xl">Feature Venue</h1>
           <Link
@@ -80,7 +80,7 @@ function Home() {
           </Link>
         </div>
         {!venueDataLoading && venueData && venueData.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
             {venueData.map((venue, index) => (
               <VenueCard key={index} venue={venue} />
             ))}
@@ -91,7 +91,7 @@ function Home() {
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-4 md:gap-10">
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-2xl md:text-4xl">Feature Team</h1>
           <Link
@@ -103,7 +103,7 @@ function Home() {
           </Link>
         </div>
         {!teamDataLoading && teamData && teamData.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
             {teamData.map((team, index) => (
               <TeamCard key={index} />
             ))}
@@ -114,7 +114,7 @@ function Home() {
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-4 md:gap-10">
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-2xl md:text-4xl">Activity Nearby</h1>
           <Link
@@ -125,13 +125,13 @@ function Home() {
             <FaArrowRight className="w-5 h-5" />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
           <TournamentCard />
           <TournamentCard />
           <TournamentCard />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

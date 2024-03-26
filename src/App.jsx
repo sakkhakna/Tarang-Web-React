@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+import { getUser } from "./service/user.api";
 import AppContext from "./contexts/AppContext";
 import Home from "./pages/user/Home";
 import SignIn from "./pages/auth/SignIn";
@@ -25,42 +26,49 @@ import Otp from "./pages/auth/Otp";
 import Sport from "./pages/user/Sport";
 
 function App() {
-  const { dispatch, user } = useContext(AppContext);
-  const role = "user";
-  const queryClient = new QueryClient();
+  const { dispatch } = useContext(AppContext);
+  const { data, isLoading } = useQuery({
+    queryKey: ["getUsers"],
+    queryFn: getUser,
+  });
+  useEffect(() => {
+    dispatch({ type: "SET_USER_DATA", payload: data });
+  }, [data]);
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  const role = data.is_admin === 1 ? "admin" : "user";
   return (
-    <QueryClientProvider client={queryClient}>
-      <Router>
-        <Routes>
-          {role === "admin" ? (
-            <Route path="/" element={<AdminLayout />}>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/venue" element={<AdminVenue />} />
-              <Route path="/team" element={<AdminTeam />} />
-              <Route path="/reserve" element={<AdminReservation />} />
-              <Route path="/user" element={<User />} />
-              <Route path="/venueform" element={<VenueForm />} />
-            </Route>
-          ) : (
-            <Route path="/" element={<UserLayout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/team" element={<Team />} />
-              <Route path="/venue" element={<Venue />} />
-              <Route path="/venue/:venueId" element={<SingleVenuePage />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/sport/:sportName/:sportId" element={<Sport />} />
-              <Route path="/reservation" element={<ReservationForm />} />
-              <Route path="/hosting" element={<HostingForm />} />
-              <Route path="/challenge" element={<ChallengeForm />} />
-              <Route path="/join" element={<JoinForm />} />
-            </Route>
-          )}
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/otp" element={<Otp />} />
-        </Routes>
-      </Router>
-    </QueryClientProvider>
+    <Router>
+      <Routes>
+        {role === "admin" ? (
+          <Route path="/" element={<AdminLayout />}>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/venue" element={<AdminVenue />} />
+            <Route path="/team" element={<AdminTeam />} />
+            <Route path="/reserve" element={<AdminReservation />} />
+            <Route path="/user" element={<User />} />
+            <Route path="/venueform" element={<VenueForm />} />
+          </Route>
+        ) : (
+          <Route path="/" element={<UserLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/venue" element={<Venue />} />
+            <Route path="/venue/:venueId" element={<SingleVenuePage />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/sport/:sportName/:sportId" element={<Sport />} />
+            <Route path="/reservation" element={<ReservationForm />} />
+            <Route path="/hosting" element={<HostingForm />} />
+            <Route path="/challenge" element={<ChallengeForm />} />
+            <Route path="/join" element={<JoinForm />} />
+          </Route>
+        )}
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/otp" element={<Otp />} />
+      </Routes>
+    </Router>
   );
 }
 

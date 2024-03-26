@@ -31,12 +31,12 @@ function Sport() {
   }
   console.log(venueData);
   return (
-    <div className="max-w-7xl mx-auto flex flex-col gap-4 xl:gap-10 items-center p-4 xl:px-0 xl:py-10">
+    <section className="max-w-7xl mx-auto flex flex-col gap-4 md:gap-10 items-center p-4 md:p-10">
       <BannerFilter />
-      <div className="w-full flex flex-col gap-4 xl:gap-10">
+      <div className="w-full flex flex-col gap-4 md:gap-10">
         <h1 className="text-2xl md:text-4xl font-bold">{sportName} Venue</h1>
         {!isLoading && venueData && filteredVenueData.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 xl:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-10">
             {filteredVenueData.map((venue, index) => (
               <VenueCard key={index} venue={venue} />
             ))}
@@ -47,10 +47,10 @@ function Sport() {
           </div>
         )}
       </div>
-      <div className="w-full flex flex-col gap-4 xl:gap-10">
+      <div className="w-full flex flex-col gap-4 md:gap-10">
         <h1 className="text-2xl md:text-4xl font-bold">Team Match</h1>
         {!isLoading && teamData && filteredTeamData.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 xl:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
             {filteredTeamData.map((team, index) => (
               <TeamCard key={index} team={team} />
             ))}
@@ -61,7 +61,7 @@ function Sport() {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }
 
