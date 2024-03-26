@@ -24,6 +24,7 @@ import Venue from "./pages/user/venue/Venue";
 import SingleVenuePage from "./pages/user/venue/SingleVenue";
 import Otp from "./pages/auth/Otp";
 import Sport from "./pages/user/Sport";
+import Spinner from "./ui/Spinner";
 
 function App() {
   const { dispatch } = useContext(AppContext);
@@ -35,7 +36,7 @@ function App() {
     dispatch({ type: "SET_USER_DATA", payload: data });
   }, [data]);
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner fullScreenSpinner={true} />;
   }
   const role = data.is_admin === 1 ? "admin" : "user";
   return (

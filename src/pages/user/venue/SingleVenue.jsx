@@ -7,6 +7,7 @@ import { GiTennisCourt } from "react-icons/gi";
 import Button from "../../../ui/shared/Button";
 import Modal from "../../../ui/shared/Modal";
 import ReservationForm from "../../user/ReservationForm";
+import Spinner from "../../../ui/Spinner";
 
 function SingleVenuePage() {
   const { venueId } = useParams();
@@ -29,7 +30,7 @@ function SingleVenuePage() {
           />
         </Modal>
       )}
-      {!isLoading && data && (
+      {!isLoading && data ? (
         <div className="max-w-7xl flex gap-4 md:gap-10 p-4 md:p-10">
           <div className="flex flex-col gap-4 md:gap-10 w-full">
             <div className="flex justify-between items-center gap-4 bg-white p-4 md:p-10">
@@ -91,6 +92,10 @@ function SingleVenuePage() {
               </div>
             </div>
           </div>
+        </div>
+      ) : (
+        <div className="flex flex-col justify-center items-center p-40">
+          <Spinner />
         </div>
       )}
     </>

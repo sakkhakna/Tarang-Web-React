@@ -12,6 +12,7 @@ import VenueCard from "../../ui/component/VenueCard";
 import TournamentCard from "../../ui/component/TournamentCard";
 import TeamCard from "../../ui/component/TeamCard";
 import LinkButton from "../../ui/shared/LinkButton";
+import Spinner from "../../ui/Spinner";
 
 function Home() {
   const { data: sportTypeData, isLoading: sportTypeLoading } = useQuery({
@@ -38,18 +39,19 @@ function Home() {
       <div className="bg-[#d9d9d9] max-w-7xl h-[300px] flex justify-center items-center">
         <LinkButton toPage="/reservation">Reserve Your Venue Now</LinkButton>
       </div>
-      {/* <div className="grid grid-cols-1 xl:grid-cols-3 gap-10">
-        <div className="bg-[#d9d9d9] w-full h-[200px]"></div>
-        <div className="bg-[#d9d9d9] w-full h-[200px]"></div>
-        <div className="bg-[#d9d9d9] w-full h-[200px]"></div>
-      </div> */}
       <div className="flex flex-col gap-4 md:gap-10 items-center">
         <h1 className="font-bold text-center text-2xl md:text-4xl">
           Chose From your Favorite Sport
         </h1>
-        {!sportTypeLoading && sportTypeData && sportTypeData.length > 0 ? (
+        {sportTypeLoading ? (
+          <div className="p-10">
+            <Spinner />
+          </div>
+        ) : !sportTypeLoading &&
+          sportTypeData &&
+          sportTypeData.sport_types.length > 0 ? (
           <div className="max-w-[1120px] flex flex-wrap justify-center gap-4 md:gap-10">
-            {sportTypeData.map((sport, index) => (
+            {sportTypeData.sport_types.map((sport, index) => (
               <Link
                 key={index}
                 to={`/sport/${sport.name}/${sport.id}`}
@@ -68,8 +70,8 @@ function Home() {
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-4 md:gap-10">
-        <div className="flex justify-between items-center">
+      <div className="flex flex-col gap-4 md:gap-10 justify-center items-center">
+        <div className="w-full flex justify-between items-center">
           <h1 className="font-bold text-2xl md:text-4xl">Feature Venue</h1>
           <Link
             className="flex items-center gap-2 font-bold text-xl"
@@ -79,9 +81,13 @@ function Home() {
             <FaArrowRight className="w-5 h-5" />
           </Link>
         </div>
-        {!venueDataLoading && venueData && venueData.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
-            {venueData.map((venue, index) => (
+        {venueDataLoading ? (
+          <div className="p-10">
+            <Spinner />
+          </div>
+        ) : !venueDataLoading && venueData && venueData.venues.length > 0 ? (
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
+            {venueData.venues.map((venue, index) => (
               <VenueCard key={index} venue={venue} />
             ))}
           </div>
@@ -91,8 +97,8 @@ function Home() {
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-4 md:gap-10">
-        <div className="flex justify-between items-center">
+      <div className="flex flex-col gap-4 md:gap-10 justify-center items-center">
+        <div className="w-full flex justify-between items-center">
           <h1 className="font-bold text-2xl md:text-4xl">Feature Team</h1>
           <Link
             className="flex items-center gap-2 font-bold text-xl"
@@ -102,9 +108,13 @@ function Home() {
             <FaArrowRight className="w-5 h-5" />
           </Link>
         </div>
-        {!teamDataLoading && teamData && teamData.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
-            {teamData.map((team, index) => (
+        {teamDataLoading ? (
+          <div className="p-10">
+            <Spinner />
+          </div>
+        ) : !teamDataLoading && teamData && teamData.teams.length > 0 ? (
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
+            {teamData.teams.map((team, index) => (
               <TeamCard key={index} />
             ))}
           </div>
