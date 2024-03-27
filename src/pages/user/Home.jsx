@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getSportTypes } from "../../service/sport.api";
 import { getVenues } from "../../service/venue.api";
-import { getTeam } from "../../service/team.api";
+import { getReservation } from "../../service/reservation.api";
 import { IoFootballOutline } from "react-icons/io5";
 import { GiShuttlecock } from "react-icons/gi";
 import { TbPingPong } from "react-icons/tb";
@@ -23,9 +23,13 @@ function Home() {
     queryKey: ["getVenuesKey"],
     queryFn: getVenues,
   });
-  const { data: teamData, isLoading: teamDataLoading } = useQuery({
-    queryKey: ["getTeamKey"],
-    queryFn: getTeam,
+  // const { data: teamData, isLoading: teamDataLoading } = useQuery({
+  //   queryKey: ["getTeamKey"],
+  //   queryFn: getTeam,
+  // });
+  const { data: reservationData, isLoading: reservationLoading } = useQuery({
+    queryKey: ["getReservationKey"],
+    queryFn: getReservation,
   });
   const sportIcons = [
     <IoFootballOutline className="w-10 h-10" />,
@@ -34,6 +38,12 @@ function Home() {
     <PiVolleyball className="w-10 h-10" />,
     <TbPingPong className="w-10 h-10" />,
   ];
+  let filteredTeamData = [];
+  if (!reservationLoading && reservationData) {
+    filteredTeamData = reservationData.reservations.filter((team) => {
+      return team.find_member === 1 || team.find_team === 1;
+    });
+  }
   return (
     <section className="flex flex-col gap-4 md:gap-10 p-4 md:p-10">
       <div className="bg-[#d9d9d9] max-w-7xl h-[300px] flex justify-center items-center">
@@ -87,7 +97,7 @@ function Home() {
           </div>
         ) : !venueDataLoading && venueData && venueData.venues.length > 0 ? (
           <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
-            {venueData.venues.map((venue, index) => (
+            {venueData.venues.slice(0, 6).map((venue, index) => (
               <VenueCard key={index} venue={venue} />
             ))}
           </div>
@@ -108,14 +118,18 @@ function Home() {
             <FaArrowRight className="w-5 h-5" />
           </Link>
         </div>
-        {teamDataLoading ? (
+        {reservationLoading ? (
           <div className="p-10">
             <Spinner />
           </div>
-        ) : !teamDataLoading && teamData && teamData.teams.length > 0 ? (
+        ) : !reservationLoading &&
+          reservationData &&
+          reservationData.reservations.length > 0 ? (
           <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
-            {teamData.teams.map((team, index) => (
-              <TeamCard key={index} />
+            {filteredTeamData.slice(0, 6).map((team, index) => (
+              <div key={index}>
+                <TeamCard team={team} />
+              </div>
             ))}
           </div>
         ) : (

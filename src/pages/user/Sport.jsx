@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getVenues } from "../../service/venue.api";
 import { getTeam } from "../../service/team.api";
+import { getReservation } from "@/service/reservation.api";
 import VenueCard from "../../ui/component/VenueCard";
 import TeamCard from "../../ui/component/TeamCard";
 import BannerFilter from "../../ui/component/BannerFilter";
@@ -16,6 +17,10 @@ function Sport() {
     queryKey: ["getTeamKey"],
     queryFn: getTeam,
   });
+  const { data: reservationData, isLoading: reservationLoading } = useQuery({
+    queryKey: ["getReservationKey"],
+    queryFn: getReservation,
+  });
   let filteredVenueData = [];
   let filteredTeamData = [];
   if (!isLoading && venueData) {
@@ -23,9 +28,18 @@ function Sport() {
       return venue.sportTypes.id === parseInt(sportId);
     });
   }
-  if (teamData) {
-    filteredTeamData = teamData.teams.filter((team) => {
-      return team.sportType.id === parseInt(sportId);
+  // if (teamData) {
+  //   filteredTeamData = teamData.teams.filter((team) => {
+  //     return team.sportType.id === parseInt(sportId);
+  //   });
+  // }
+  console.log(reservationData);
+  if (!reservationLoading && reservationData) {
+    filteredTeamData = reservationData.reservations.filter((team) => {
+      return (
+        (team.find_member === 1 || team.find_team === 1) &&
+        team.venue.sportTypes.id === parseInt(sportId)
+      );
     });
   }
   return (
@@ -50,7 +64,9 @@ function Sport() {
         {!isLoading && teamData && filteredTeamData.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-10">
             {filteredTeamData.map((team, index) => (
-              <TeamCard key={index} team={team} />
+              <div>
+                <TeamCard key={index} team={team} />
+              </div>
             ))}
           </div>
         ) : (

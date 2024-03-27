@@ -32,6 +32,7 @@ function App() {
     queryKey: ["getUsers"],
     queryFn: getUser,
   });
+  console.log(data);
   useEffect(() => {
     dispatch({ type: "SET_USER_DATA", payload: data });
   }, [data]);

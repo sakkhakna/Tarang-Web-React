@@ -6,6 +6,11 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const initialState = {
     userData: {},
+    testUser: {
+      user: {},
+      reservations: [],
+      teams: [],
+    },
   };
 
   const [state, dispatch] = useReducer(AppReducer, initialState);

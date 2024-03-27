@@ -18,3 +18,16 @@ export const createReservation = async (reservation) => {
     return null;
   }
 };
+
+export const getReservation = async () => {
+  try {
+    const res = await axios.get("https://api.tarang.site/api/reservation", {
+      headers: { Accept: "application/json" },
+    });
+    const data = res.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
