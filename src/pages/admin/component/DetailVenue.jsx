@@ -1,48 +1,65 @@
-import { useQuery } from "@tanstack/react-query";
-import { showSingleVenue } from "../../../service/Venue.api";
-import { useParams } from "react-router-dom";
 import Input from "../../../ui/shared/Input";
-import LinkButton from "../../../ui/shared/LinkButton";
 import Button from "../../../ui/shared/Button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { deleteVenue } from "../../../service/Venue.api";
+import { updateVenue } from "../../../service/Venue.api";
 
-function DetailVenue() {
-  const { id } = useParams();
-  const { data, isLoading } = useQuery({
-    queryKey: ["getSingleVenueKey", id],
-    queryFn: () => showSingleVenue(id),
-  });
+function DetailVenue({venueData}) {
   const [updateData, setUpdateData] = useState({
-    name: !isLoading && data ? data.data.name : "",
-  })
+    name: venueData.name,
+    size: venueData.size,
+    sportType : venueData.sportTypes.id,
+    description: venueData.description ,
+    photo: venueData.photo
+  });
+  console.log(updateData);
+  const  navigation = useNavigate();
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    console.log(venueData.id);
+    const response = await deleteVenue(venueData.id);
+    if (response.status=== 204) {
+      alert("Succesfully Deleted!")
+    }
+  }
   const onChange = (e) => {
     e.preventDefault();
     if (e.target.id === "photo") {
-      setInputData((prevState) => ({
+      setUpdateData((prevState) => ({
         ...prevState,
         [e.target.id]: e.target.files[0],
       }));
     } else {
-      setInputData((prevState) => ({
+      setUpdateData((prevState) => ({
         ...prevState,
         [e.target.id]: e.target.value,
       }));
     }
   };
 
-  const Submit = (e) => {
+  const Submit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('photo', inputData.photo);
-    formData.append('name', inputData.name);
-    formData.append('sport_type_id', inputData.sport_type_id);
-    formData.append('description', inputData.description);
-    formData.append('size', inputData.size);
-    createVenue(formData);
+    formData.append("photo", updateData.photo);
+    formData.append("name", updateData.name);
+    formData.append("sport_type_id", updateData.sportType);
+    formData.append("description", updateData.description);
+    formData.append("size", updateData.size);
+    await updateVenue(venueData.id, formData);
+    // try {
+    //   await updateVenue(venueData.id , formData);
+    //   // Optionally navigate after successful update
+    //   navigation('/venue');
+    // } catch (error) {
+    //   console.error("Error updating venue:", error);
+    //   // Handle error here (e.g., show an error message to the user)
+    // }
   };
+
+
   return (
     <>
-    {!isLoading && data && (
         <div className="max-w-4xl mx-auto p-10 flex flex-col items-center gap-10 bg-white">
         <h1 className="text-2xl md:text-4xl font-bold">Edit The Venue</h1>
         <form encType="multipart/form-data" onSubmit={Submit} className="flex flex-col gap-10 items-center w-full">
@@ -52,7 +69,7 @@ function DetailVenue() {
                 <Input
                   type="text"
                   title="Name Of The Venue"
-                  id={"name"}
+                  id="name"
                   value={updateData.name}
                   onChange={onChange}
                 />
@@ -62,7 +79,7 @@ function DetailVenue() {
                   type="number"
                   title="size"
                   id={"size"}
-                  value={data.data.size}
+                  value={updateData.size}
                   onChange={onChange}
                 />
               </div>
@@ -75,7 +92,7 @@ function DetailVenue() {
                 onChange={onChange}
                 name="category"
                 id="sport_type_id"
-                value={data.data.id}
+                value={updateData.sportType}
                 className="rounded-xl w-full px-4 py-2 border focus:outline-none focus:border-[#2AD5A5]"
               >
                 <option value={null}>Select</option>
@@ -93,7 +110,7 @@ function DetailVenue() {
                 onChange={onChange}
                 name="Comment"
                 id="description"
-                value={data.data.description}
+                value={updateData.description}
                 rows="5"
                 className="px-4 py-2 rounded-2xl border focus:outline-none focus:ring focus:border-[#2AD5A5]"
               ></textarea>
@@ -103,21 +120,22 @@ function DetailVenue() {
                 type="file"
                 title={"image"}
                 id={"photo"}
+                // value={updateData.photo}
                 onChange={onChange}
               />
             </div>
           </div>
           <div className="flex gap-4">
-            <LinkButton toPage="/" customClass={"md:w-[150px] bg-[#ff0000] text-center"}>
+            <Button onClick={handleDelete} customClass={"md:w-[150px] bg-[#ff0000] text-center"}>
               Delete
-            </LinkButton>
+            </Button>
             <Button type={"submit"} customClass="md:w-[150px]">
               Save 
             </Button>
           </div>
         </form>
       </div>
-    )}
+    {/* )} */}
     
     </>
   );

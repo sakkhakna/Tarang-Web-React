@@ -44,16 +44,44 @@ export const getVenues = async () => {
 };
 
 export const showSingleVenue = async (id) => {
-  const options = {
-    method: "GET",
-    url: `https://api.tarang.site/api/venues/${id}`,
-    headers: { "content-type": "application/json" },
-  };
-
   try {
-    const { data } = await axios.request(options);
-    return data;
-  } catch (error) {
-    console.error(error);
+    const response = await axios.get(`https://api.tarang.site/api/venues/${id}`, {
+    headers: { "content-type": "application/json" },
+  });
+  const data = response.data
+  console.log(data);
+  return data;
+  } catch(error) {
+    console.log(error);
+    return null
   }
 };
+
+export const deleteVenue = async (id) => {
+  try {
+    const response = await axios.delete(`https://api.tarang.site/api/venues/${id}`,{
+      headers: { "content-type": "application/json", Accept: "application/json" },
+    });
+    console.log(response.status);
+    return response;
+  } catch(error){
+    console.log(error);
+    return null
+  }
+}
+
+export const updateVenue = async (id , venue) => {
+  try {
+    const response = await axios.put(`https://api.tarang.site/api/venues/${id}`, venue,{
+      headers : {
+        'Content-Type': 'multipart/form-data',Accept: 'application/json'
+      },
+    })
+    const data = response.data
+    console.log(data);
+    return data;
+  } catch(error) {
+    console.log(error);
+    return null
+  }
+}

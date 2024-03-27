@@ -8,6 +8,7 @@ function Venue() {
     queryKey: ["getVenues"],
     queryFn: getVenues,
   });
+  console.log(data);
   if (isLoading) {
     return <p>Loading</p>;
   }
@@ -56,11 +57,11 @@ function Venue() {
       </div>
       <div className="flex gap-4 md:gap-10">
       <div className="w-full md:w-1/2 grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-10">
-          {!isLoading &&
-            data &&
-            data.data
+          {isLoading ? <p>Loading...</p> : (!isLoading &&
+            data && data.venues.length > 0 &&
+            data.venues
               .slice(0, 4)
-              .map((venue, index) => <VenueCard key={index} data={venue} />)}
+              .map((venue, index) => <VenueCard key={index} data={venue} />))}
         </div>
         <div className="hidden w-1/2 bg-white rounded-xl md:flex items-center justify-center">
           <h1>No Venue Yet</h1>
