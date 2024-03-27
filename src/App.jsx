@@ -39,7 +39,7 @@ function App() {
   if (isLoading) {
     return <Spinner fullScreenSpinner={true} />;
   }
-  const role = data.is_admin === 1 ? "admin" : "user";
+  const role = data.is_admin === 1 ? "admin" : "admin";
   return (
     <Router>
       <Routes>

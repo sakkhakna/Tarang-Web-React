@@ -1,9 +1,12 @@
-import { getVenues } from "../../service/venue.api";
+import { useContext } from 'react';
+import AppContext from '@/contexts/AppContext';
+import { getVenues } from '../../service/Venue.api'
 import VenueCard from "../admin/component/VenueCard";
 import LinkButton from "../../ui/shared/LinkButton";
 import { useQuery } from "@tanstack/react-query";
 
 function Venue() {
+  const {singleVenue} = useContext(AppContext);
   const { data, isLoading } = useQuery({
     queryKey: ["getVenues"],
     queryFn: getVenues,
@@ -58,12 +61,12 @@ function Venue() {
         <div className="w-full md:w-1/2 grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-10">
           {!isLoading &&
             data &&
-            data.data
+            data.venues
               .slice(0, 4)
               .map((venue, index) => <VenueCard key={index} data={venue} />)}
         </div>
         <div className="hidden w-1/2 bg-white rounded-xl md:flex items-center justify-center">
-          <h1>No Venue Yet</h1>
+          {singleVenue.id ? <div><h1>{singleVenue.id}</h1></div> : <div><h1>No Venue Select</h1></div>}
         </div>
       </div>
     </div>

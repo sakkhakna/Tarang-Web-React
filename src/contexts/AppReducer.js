@@ -5,6 +5,11 @@ const AppReducer = (state, action) => {
         ...state,
         userData: action.payload,
       };
+    case "SET_SINGLE_VENUE":
+      return {
+        ...state, 
+        singleVenue: action.payload,
+      }
     default:
       return state;
   }

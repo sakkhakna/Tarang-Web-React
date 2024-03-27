@@ -11,6 +11,7 @@ export const AppProvider = ({ children }) => {
       reservations: [],
       teams: [],
     },
+    singleVenue: {},
   };
 
   const [state, dispatch] = useReducer(AppReducer, initialState);

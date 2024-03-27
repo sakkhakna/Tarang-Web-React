@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import AppContext from "@/contexts/AppContext";
+
 function VenueCard({ data }) {
+  const {dispatch} = useContext(AppContext);
   // const [data,setData] = useState();
 
   // useEffect(()=>{
@@ -11,8 +15,11 @@ function VenueCard({ data }) {
 
   // console.log(data);
   //   const { data } = useQuery("showVenues", showSingleVenue);
+  const setSingleVenue = () => {
+    dispatch({type: "SET_SINGLE_VENUE", payload: data})
+  }
   return (
-    <div className="flex flex-col w-full bg-white border border-gray-200 shadow rounded-xl">
+    <button onClick={setSingleVenue} className="flex flex-col w-full bg-white border border-gray-200 shadow rounded-xl">
       <div className="w-full h-[150px] bg-[#eaeaea]">
         <img
           src={`https://api.tarang.site/${data.photo}`}
@@ -29,7 +36,7 @@ function VenueCard({ data }) {
           Size of the Court : {data.size}
         </h1>
       </div>
-    </div>
+    </button>
   );
 }
 
