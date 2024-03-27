@@ -19,7 +19,7 @@ import JoinForm from "./pages/user/JoinForm";
 import VenueForm from "./pages/admin/VenueForm";
 
 function App() {
-  const role = "admin";
+  const role = "user";
   return (
     <Router>
       <Routes>
