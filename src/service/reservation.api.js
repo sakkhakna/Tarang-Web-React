@@ -3,7 +3,7 @@ import axios from "axios";
 export const createReservation = async (reservation) => {
   try {
     const res = await axios.post(
-      "http://api.tarang.test/api/reservation",
+      "https://api.tarang.site/api/reservation",
       reservation,
       {
         headers: {
@@ -21,7 +21,7 @@ export const createReservation = async (reservation) => {
 
 export const getReservation = async () => {
   try {
-    const res = await axios.get("http://api.tarang.test/api/reservation", {
+    const res = await axios.get("https://api.tarang.site/api/reservation", {
       headers: { Accept: "application/json" },
     });
     const data = res.data;

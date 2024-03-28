@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getTeam = async () => {
   try {
-    const res = await axios.get("http://api.tarang.test/api/teams", {
+    const res = await axios.get("https://api.tarang.site/api/teams", {
       headers: { Accept: "application/json" },
     });
     return res.data;
@@ -15,7 +15,7 @@ export const getTeam = async () => {
 export const createTeam = async (team) => {
   try {
     const { status, data } = await axios.post(
-      "http://api.tarang.test/api/teams",
+      "https://api.tarang.site/api/teams",
       team,
       {
         headers: {
