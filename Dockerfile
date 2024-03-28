@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package.json /app
 
 # Set the Node.js heap size
-ENV NODE_OPTIONS="--max-old-space-size=1024"
+ENV NODE_OPTIONS="--max-old-space-size=512"
 
 RUN npm install
 
