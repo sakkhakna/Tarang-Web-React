@@ -5,7 +5,7 @@ import LinkButton from "../../ui/shared/LinkButton";
 
 function ChallengeForm() {
   return (
-    <section className="p-10">
+    <section className="p-4 md:p-10">
       <div className="max-w-4xl mx-auto p-10 flex flex-col items-center gap-10 bg-white">
         <div className="flex flex-col gap-4 items-center">
           <h1 className="text-2xl md:text-4xl font-bold">
@@ -17,9 +17,6 @@ function ChallengeForm() {
           <div className="flex flex-col md:flex-row gap-4">
             <div className="w-full">
               <Input type="text" title="Your Team Name" />
-            </div>
-            <div className="w-full">
-              <Input type="text" title="Your Contact" />
             </div>
           </div>
           <div className="w-full flex flex-col gap-2">
@@ -34,9 +31,9 @@ function ChallengeForm() {
             ></textarea>
           </div>
         </div>
-        <div className="flex gap-4">
+        <div className="w-full flex justify-end gap-4">
           <LinkButton toPage="/">Cancel</LinkButton>
-          <Button customClass="w-full md:w-[200px]">Request</Button>
+          <Button>Request</Button>
         </div>
       </div>
     </section>

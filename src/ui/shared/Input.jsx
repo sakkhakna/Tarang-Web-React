@@ -13,12 +13,11 @@ function Input({
   disabled,
   customClass,
 }) {
-
   const defaultClass =
-		"rounded-xl w-full px-4 py-2 border focus:outline-none focus:ring focus:border-[#2AD5A5]";
-	const InputClass = customClass
-		? `${defaultClass} ${customClass}`
-		: defaultClass;
+    "rounded-xl w-full py-2 px-4 border-2 focus:outline-none focus:ring focus:border-[#227F4B]";
+  const inputClass = customClass
+    ? `${defaultClass} ${customClass}`
+    : defaultClass;
 
   const isPasswordInput = type === "password";
   const [showPassword, setShowPassword] = useState(false);
@@ -27,7 +26,7 @@ function Input({
     setShowPassword(!showPassword);
   };
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 w-full">
       <label htmlFor={id} className="text-sm md:text-base">
         {title}
       </label>
@@ -41,7 +40,7 @@ function Input({
           onChange={onChange}
           value={value}
           required={isRequired}
-          className={InputClass}
+          className={inputClass}
           disabled={disabled}
         />
         {isPasswordInput && (

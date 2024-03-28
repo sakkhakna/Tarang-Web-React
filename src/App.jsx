@@ -1,4 +1,8 @@
+import { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getUser } from "./service/user.api";
+import AppContext from "./contexts/AppContext";
 import Home from "./pages/user/Home";
 import SignIn from "./pages/auth/SignIn";
 import UserLayout from "./ui/UserLayout";
@@ -13,13 +17,29 @@ import Team from "./pages/user/Team";
 import ReservationForm from "./pages/user/ReservationForm";
 import Profile from "./pages/user/Profile";
 import HostingForm from "./pages/user/HostingForm";
-import Badminton from "./pages/user/sport/Badminton";
 import ChallengeForm from "./pages/user/ChallengeForm";
 import JoinForm from "./pages/user/JoinForm";
 import VenueForm from "./pages/admin/VenueForm";
+import Venue from "./pages/user/venue/Venue";
+import SingleVenuePage from "./pages/user/venue/SingleVenue";
+import Otp from "./pages/auth/Otp";
+import Sport from "./pages/user/Sport";
+import Spinner from "./ui/Spinner";
 
 function App() {
-  const role = "user";
+  const { dispatch } = useContext(AppContext);
+  const { data, isLoading } = useQuery({
+    queryKey: ["getUsers"],
+    queryFn: getUser,
+  });
+  console.log(data);
+  useEffect(() => {
+    dispatch({ type: "SET_USER_DATA", payload: data });
+  }, [data]);
+  if (isLoading) {
+    return <Spinner fullScreenSpinner={true} />;
+  }
+  const role = data.is_admin === 1 ? "admin" : "user";
   return (
     <Router>
       <Routes>
@@ -36,16 +56,19 @@ function App() {
           <Route path="/" element={<UserLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/team" element={<Team />} />
-            <Route path="/reservation" element={<ReservationForm />} />
+            <Route path="/venue" element={<Venue />} />
+            <Route path="/venue/:venueId" element={<SingleVenuePage />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/sport/:sportName/:sportId" element={<Sport />} />
+            <Route path="/reservation" element={<ReservationForm />} />
             <Route path="/hosting" element={<HostingForm />} />
-            <Route path="/sport" element={<Badminton />} />
             <Route path="/challenge" element={<ChallengeForm />} />
             <Route path="/join" element={<JoinForm />} />
           </Route>
         )}
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/otp" element={<Otp />} />
       </Routes>
     </Router>
   );

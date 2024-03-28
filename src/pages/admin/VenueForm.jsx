@@ -2,7 +2,7 @@ import Input from "../../ui/shared/Input";
 import LinkButton from "../../ui/shared/LinkButton";
 import Button from "../../ui/shared/Button";
 import { useState } from "react";
-import { addVenue, createVenue } from "../../service/Venue.api";
+import { createVenue } from "../../service/venue.api";
 
 function VenueForm() {
   const [inputData, setInputData] = useState({
@@ -12,26 +12,44 @@ function VenueForm() {
     description: "",
     photo: "",
   });
+
   const onChange = (e) => {
     e.preventDefault();
-    setInputData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value,
-    }));
+    if (e.target.id === "photo") {
+      setInputData((prevState) => ({
+        ...prevState,
+        [e.target.id]: e.target.files[0],
+      }));
+    } else {
+      setInputData((prevState) => ({
+        ...prevState,
+        [e.target.id]: e.target.value,
+      }));
+    }
   };
   console.log(inputData);
 
   const Submit = (e) => {
     e.preventDefault();
-    createVenue(inputData);
+    const formData = new FormData();
+    formData.append("photo", inputData.photo);
+    formData.append("name", inputData.name);
+    formData.append("sport_type_id", inputData.sport_type_id);
+    formData.append("description", inputData.description);
+    formData.append("size", inputData.size);
+    createVenue(formData);
   };
 
   return (
     <section className="p-10">
       <div className="max-w-4xl mx-auto p-10 flex flex-col items-center gap-10 bg-white">
         <h1 className="text-2xl md:text-4xl font-bold">Add New Venue</h1>
-        <form encType="multipart/form-data" onSubmit={Submit}>
-          <div className="flex flex-col max-w-4xl w-full gap-4">
+        <form
+          encType="multipart/form-data"
+          onSubmit={Submit}
+          className="flex flex-col gap-10 items-center w-full"
+        >
+          <div className="flex flex-col w-full gap-4">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="w-full">
                 <Input
@@ -92,7 +110,7 @@ function VenueForm() {
             <LinkButton toPage="/" customClass={"md:w-[150px] text-center"}>
               Cancel
             </LinkButton>
-            <Button type={'submit'} customClass="md:w-[150px]">
+            <Button type={"submit"} customClass="md:w-[150px]">
               Add Venue
             </Button>
           </div>

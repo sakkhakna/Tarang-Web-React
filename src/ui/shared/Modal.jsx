@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { FaFax } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
 
 function Modal({ children, handleModal }) {
   const modalRef = useRef();
@@ -35,13 +35,13 @@ function Modal({ children, handleModal }) {
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         ref={modalRef}
-        className="p-4 md:p-10 bg-[#EAECF6] max-h-[80vh] overflow-y-auto relative"
+        className="p-4 md:p-10 bg-white max-h-[90vh] overflow-y-auto relative"
       >
         <button
           className="absolute top-3 right-4"
           onClick={() => handleModal(false)}
-        >   
-            <FaFax className="text-[#5E17EB]" />
+        >
+          <RxCross2 />
         </button>
         {children}
       </motion.div>

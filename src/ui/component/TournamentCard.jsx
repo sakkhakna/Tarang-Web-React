@@ -1,4 +1,4 @@
-import Button from "../shared/Button";
+import Button from '../shared/Button'
 
 function TournamentCard() {
   return (
@@ -100,8 +100,8 @@ function TournamentCard() {
         </div>
       </div>
       <div className="flex gap-4">
-        <Button customClass="w-full">See Detail</Button>
-        <Button customClass="w-full">Join The Match</Button>
+      <Button customClass={'md:w-full text-white'}>See Detail</Button>
+        <Button customClass={'text-white md:w-full'}>Join The Match</Button>
       </div>
     </div>
   );

@@ -13,15 +13,15 @@ function AdminSidebar() {
     <aside className="hidden xl:block sticky h-screen top-0 left-0 bottom-0 bg-white border-r-2">
       <div className="w-[230px] p-4 h-screen flex flex-col gap-10">
         <Link to="/" className="w-full flex justify-center">
-          <img src={Logo} alt="Logo" className="w-28" />
+          <img src={Logo} alt="Logo" className="w-36" />
         </Link>
         <div className="flex flex-col text-lg font-semibold gap-4">
           <NavLink
             to="/"
             className={({ isActive }) => {
               return !isActive
-                ? "font-semibold flex gap-2 items-center hover:bg-green-300 p-2 rounded-lg"
-                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
+                ? "font-semibold flex gap-2 items-center hover:text-white hover:bg-[#2AD5A5] p-2 rounded-lg"
+                : "font-semibold flex gap-2 items-center text-white p-2 rounded-lg bg-[#2AD5A5]";
             }}
           >
             <MdDashboard />
@@ -32,8 +32,8 @@ function AdminSidebar() {
             to="/venue"
             className={({ isActive }) => {
               return !isActive
-                ? "font-semibold flex gap-2 items-center hover:bg-green-300 p-2 rounded-lg"
-                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
+                ? "font-semibold flex gap-2 items-center hover:text-white hover:bg-[#2AD5A5] p-2 rounded-lg"
+                : "font-semibold flex gap-2 items-center text-white p-2 rounded-lg bg-[#2AD5A5]";
             }}
           >
             <TbSoccerField />
@@ -44,20 +44,20 @@ function AdminSidebar() {
             to="/reserve"
             className={({ isActive }) => {
               return !isActive
-                ? "font-semibold flex gap-2 items-center hover:bg-green-300 p-2 rounded-lg"
-                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
+                ? "font-semibold flex gap-2 items-center hover:text-white hover:bg-[#2AD5A5] p-2 rounded-lg"
+                : "font-semibold flex gap-2 items-center text-white p-2 rounded-lg bg-[#2AD5A5]";
             }}
           >
             <FaBookmark />
-            Reserve
+            Reservation
           </NavLink>
 
           <NavLink
             to="/team"
             className={({ isActive }) => {
               return !isActive
-                ? "font-semibold flex gap-2 items-center hover:bg-green-300 p-2 rounded-lg"
-                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
+                ? "font-semibold flex gap-2 items-center hover:text-white hover:bg-[#2AD5A5] p-2 rounded-lg"
+                : "font-semibold flex gap-2 items-center p-2 text-white rounded-lg bg-[#2AD5A5]";
             }}
           >
             <RiTeamFill />
@@ -68,8 +68,8 @@ function AdminSidebar() {
             to="/user"
             className={({ isActive }) => {
               return !isActive
-                ? "font-semibold flex gap-2 items-center hover:bg-green-300 p-2 rounded-lg"
-                : "font-semibold flex gap-2 items-center p-2 rounded-lg bg-green-300";
+                ? "font-semibold flex gap-2 items-center hover:text-white hover:bg-[#2AD5A5] p-2 rounded-lg"
+                : "font-semibold flex gap-2 items-center text-white p-2 rounded-lg bg-[#2AD5A5]";
             }}
           >
             <FaUser />

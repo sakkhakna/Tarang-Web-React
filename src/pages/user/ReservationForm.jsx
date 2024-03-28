@@ -1,152 +1,154 @@
-import Button from "../../ui/shared/Button.jsx";
-import Input from "../../ui/shared/Input.jsx";
+import { useState, useContext } from "react";
+import { createReservation } from "../../service/reservation.api";
+import AppContext from "../../contexts/AppContext";
+import Input from "../../ui/shared/Input";
+import Button from "../../ui/shared/Button";
+import { createTeam } from "../../service/team.api";
 
-function ReservationForm() {
+function ReservationForm({ venueId, sportTypeId, handleModal }) {
+  const { dispatch, user } = useContext(AppContext);
+  const [teamOptions, setTeamOptions] = useState({
+    find_team: false,
+    find_member: false,
+  });
+  const handleCheck = (e) => {
+    setTeamOptions({
+      ...teamOptions,
+      [e.target.value]: e.target.checked,
+    });
+  };
+  const [inputData, setInputData] = useState({
+    phone: "",
+    attendee: 0,
+    date: "",
+    start_time: "",
+    end_time: "",
+    venue_id: parseInt(venueId),
+    name: "",
+    sport_type_id: parseInt(sportTypeId),
+  });
+  const onChange = (e) => {
+    e.preventDefault();
+    setInputData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    // if (user.team === null) {
+    const teamFormData = new FormData();
+    teamFormData.append("name", inputData.name);
+    teamFormData.append("sport_type_id", inputData.sport_type_id);
+    const resTeam = await createTeam(teamFormData);
+    // console.log(resTeam.data.data.id);
+    // console.log(team.data.id);
+    // }
+    const formData = new FormData();
+    formData.append("phone", inputData.phone);
+    formData.append("attendee", parseInt(inputData.attendee));
+    formData.append("date", inputData.date);
+    formData.append("start_time", inputData.start_time);
+    formData.append("end_time", inputData.end_time);
+    formData.append("venue_id", inputData.venue_id);
+    formData.append("find_team", teamOptions.find_team === true ? 1 : 0);
+    formData.append("find_member", teamOptions.find_member === true ? 1 : 0);
+    formData.append("team_id", resTeam.data.data.id);
+    const res = await createReservation(formData);
+    if (res.status === 204) {
+      handleModal(false);
+    }
+  };
   return (
-    <div className="max-w-4xl mx-auto mt-[98px]">
-      <div className="bg-[#EAEAEA] h-52 mt-[150px]">Banner</div>
-      <div className="w-full p-10 space-y-5">
-        <h1 className="text-4xl font-bold text-center">
-          Court Reservation Form
+    <div>
+      <div className="max-w-2xl mx-auto bg-white rounded-lg">
+        <h1 className="text-2xl md:text-4xl font-bold text-center mb-4 md:mb-10">
+          Venue Reservation
         </h1>
-        <p className="text-center">Please complete the form below</p>
-        <div className="flex w-full gap-4">
-          {/* <div className="flex flex-col w-full">
-						<label htmlFor="name" className="text-sm md:text-base">
-							Name:
-						</label>
-						<input
-							id="name"
-							type="text"
-							className="rounded-xl w-full px-4 py-2 border focus:outline-none focus:border-[#2AD5A5]"
-						/>
-					</div> */}
-          <div className="w-full">
-            <Input id="name" type="text" title="Name" />
-          </div>
-          <div className="flex flex-col w-full gap-2">
-            <label htmlFor="category" className="text-sm md:text-base">
-              Category:
-            </label>
-            <select
-              name="category"
-              id="category"
-              className="rounded-xl w-full px-4 py-2 border focus:outline-none focus:border-[#2AD5A5]"
-            >
-              <option value="Football">Football</option>
-              <option value="Badminton">Badminton</option>
-              <option value="Ping Pong">Ping Pong</option>
-              <option value="Volleyball">Volleyball</option>
-            </select>
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="nameOfCourt" className="text-sm md:text-base">
-            Name of The Court:
-          </label>
-          <input
-            type="text"
-            className="rounded-xl w-full px-4 py-2 border focus:outline-none focus:border-[#2AD5A5]"
-          />
-        </div>
-        <div className="w-full flex gap-4">
-          <div className="flex flex-col w-full">
-            <label htmlFor="nameOfCourt" className="text-sm md:text-base">
-              Date:
-            </label>
-            <input
-              type="date"
-              className="rounded-xl w-full px-4 py-2 border focus:outline-none focus:border-[#2AD5A5]"
-            />
-          </div>
-          <div className="flex flex-col w-full">
-            <label htmlFor="nameOfCourt" className="text-sm md:text-base">
-              Time:
-            </label>
-            <div className="w-full flex items-center">
-              <input
-                id="startTime"
+        <form
+          encType="multipart/form-data"
+          onSubmit={onSubmit}
+          className="flex flex-col gap-4 w-full"
+        >
+          <div className="flex flex-col md:flex-row justify-between gap-2">
+            <Input onChange={onChange} id="date" type="date" title="Date" />
+            <div className="flex gap-2">
+              <Input
+                onChange={onChange}
+                id="start_time"
                 type="time"
-                className="rounded-xl w-full px-4 py-2 border focus:outline-none focus:border-[#2AD5A5]"
+                title="Start Time"
               />
-              <span className="p-2">to</span>
-              <input
-                id="endTime"
+              <Input
+                onChange={onChange}
+                id="end_time"
                 type="time"
-                className="rounded-xl w-full px-4 py-2 border focus:outline-none focus:border-[#2AD5A5]"
+                title="End Time"
               />
             </div>
           </div>
-        </div>
-        <div className="flex flex-col w-full">
-          <label htmlFor="nameOfCourt" className="text-sm md:text-base">
-            Type of Your Reservation:
-          </label>
-          <div className="w-full flex gap-4">
-            <input
-              type="button"
-              value="I have monthly subscription"
-              className="rounded-xl w-full px-4 py-2 border bg-white focus:outline-none focus:border-[#2AD5A5]"
-              onChange={null}
-            />
-            <input
-              type="radio"
-              value="One time rental"
-              className="rounded-xl w-full px-4 py-2 border bg-white focus:outline-none focus:border-[#2AD5A5]"
-              onClick={null}
-            />
+          <Input
+            onChange={onChange}
+            id="phone"
+            type="tel"
+            title="Phone Number"
+          />
+          <Input title="Number of Player" id="attendee" onChange={onChange} />
+          <div className="flex flex-col gap-2">
+            <label htmlFor="optional">Optional</label>
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex items-center gap-2">
+                <input
+                  onChange={handleCheck}
+                  checked={teamOptions.find_team}
+                  type="checkbox"
+                  value="find_team"
+                  id="find_team"
+                  name="default-checkbox"
+                />
+                <label htmlFor="find_team">Find a team to play against</label>
+              </div>
+              <div className="flex gap-2">
+                <input
+                  onChange={handleCheck}
+                  checked={teamOptions.find_member}
+                  type="checkbox"
+                  value="find_member"
+                  id="find_member"
+                  name="default-checkbox"
+                />
+                <label htmlFor="find_member">Find team member</label>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="flex w-full gap-4">
-          <div className="flex flex-col w-full">
-            <label htmlFor="nameOfCourt" className="text-sm md:text-base">
-              Contact:
-            </label>
-            <input type="tel" className="rounded-xl w-full px-4 py-2 border" />
+          {(teamOptions.find_member === true ||
+            teamOptions.find_team === true) && (
+            <>
+              <Input
+                title="Team Name"
+                id="name"
+                type="text"
+                onChange={onChange}
+              />
+              <div className="flex flex-col gap-2">
+                <label htmlFor="description" className="text-sm md:text-base">
+                  Description
+                </label>
+                <textarea
+                  name="description"
+                  type="text"
+                  onChange={onChange}
+                  id="description"
+                  rows="3"
+                  className="rounded-xl w-full py-2 px-4 border-2 focus:outline-none focus:ring focus:border-[#227F4B]"
+                ></textarea>
+              </div>
+            </>
+          )}
+          <div className="flex justify-end md:mt-6">
+            <Button type="submit">Reserve</Button>
           </div>
-          <div className="flex flex-col w-full">
-            <label htmlFor="nameOfCourt" className="text-sm md:text-base">
-              Estimated Attendances:
-            </label>
-            <input
-              type="number"
-              className="rounded-xl w-full px-4 py-2 border"
-            />
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="nameOfCourt" className="text-sm md:text-base">
-            Optional:
-          </label>
-          <div className="w-full flex gap-4">
-            <input
-              type="button"
-              value="Find a team to play againist"
-              className="rounded-xl w-full px-4 py-2 border bg-white focus:outline-none focus:border-[#2AD5A5]"
-              onClick={null}
-            />
-            <input
-              type="button"
-              value="Find team member"
-              className="rounded-xl w-full px-4 py-2 border bg-white focus:outline-none focus:border-[#2AD5A5]"
-              onClick={null}
-            />
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="nameOfCourt" className="text-sm md:text-base">
-            Your team:
-          </label>
-          <select
-            name="team"
-            id="team"
-            className="rounded-xl w-full px-4 py-2 border focus:outline-none focus:border-[#2AD5A5]"
-          >
-            <option value="FC Barcelona">FC Barcelona</option>
-            <option value="Dara CoCo">Dara CoCo</option>
-          </select>
-        </div>
-        <Button customClass="w-full">Submit</Button>
+        </form>
       </div>
     </div>
   );
