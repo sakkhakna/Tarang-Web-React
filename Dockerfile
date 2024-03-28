@@ -4,6 +4,10 @@ WORKDIR /app
 
 # Copy package.json and install dependencies
 COPY package.json /app
+
+# Set the Node.js heap size
+ENV NODE_OPTIONS="--max-old-space-size=1024"
+
 RUN npm install
 
 # Copy the rest of the application
