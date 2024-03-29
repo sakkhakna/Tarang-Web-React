@@ -18,7 +18,7 @@ function ProfileSection() {
     photo: data ? data.user.photo : "",
   });
   const navigate = useNavigate();
-  const signOut = async () => {
+  const handleSignOut = async () => {
     const res = await signOut();
     if (res === 204) {
       navigate("/");
@@ -28,7 +28,7 @@ function ProfileSection() {
     <section className="w-full flex flex-col gap-4 justify-center items-center border border-gray-200 bg-white shadow p-4 md:p-10 rounded-xl">
       <div className="w-full flex justify-between items-center">
         <h1 className="font-bold text-2xl md:text-4xl">My Profile</h1>
-        <Button onClick={signOut} customClass="bg-red-500">
+        <Button onClick={handleSignOut} customClass="bg-red-500">
           Log Out
         </Button>
       </div>
