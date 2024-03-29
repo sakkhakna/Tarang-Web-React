@@ -65,7 +65,7 @@ function SignIn() {
               <a href="#">
                 <img src={Fb} alt="fb" className="w-[40px] h-[40px]" />
               </a>
-              <a href="#">
+              <a href="https://api.tarang.site/auth/google/redirect">
                 <img src={Google} alt="google" className="w-[40px] h-[40px]" />
               </a>
             </div>
