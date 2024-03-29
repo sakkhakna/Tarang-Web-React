@@ -7,6 +7,7 @@ function ProtectedRoute() {
     queryKey: ["checkUserStatusLogins"],
     queryFn: checkUserStatusLogin,
   });
+  console.log(data);
   return data === 401 ? <Navigate to="/signin" /> : <Outlet />;
 }
 
