@@ -1,6 +1,5 @@
 import { Outlet, Navigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { checkUserStatusLogin } from "@/service/user.api";
 import Spinner from "@/ui/Spinner";
 import Profile from "../user/Profile";
 import { useState } from "react";

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Input from "../../ui/shared/Input";
 import Logo from "../../assets/img/logo_latin.png";
 import Button from "../../ui/shared/Button";
@@ -6,6 +7,9 @@ import Fb from "../../assets/img/facebook.png";
 import Google from "../../assets/img/google.png";
 
 function SignIn() {
+  useEffect(() => {
+    axios.get("https://api/tarang.site/sanctum/csrf-cookie");
+  }, []);
   const [inputData, setInputData] = useState({
     phoneNumber: "",
     password: "",

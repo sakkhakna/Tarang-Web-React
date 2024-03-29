@@ -71,7 +71,7 @@ function ProfileSection() {
               className="outline-none text-lg"
               // disabled={editMode}
               // onChange={onChange}
-              value={inputData.name}
+              value={data && inputData.name}
             />
             <Input
               title="Phone Number"
@@ -81,7 +81,7 @@ function ProfileSection() {
               className="outline-none text-lg"
               // disabled={editMode}
               // onChange={onChange}
-              value={inputData.phone}
+              value={data && inputData.phone}
             />
           </div>
         </div>
