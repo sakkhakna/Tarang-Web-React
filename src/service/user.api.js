@@ -4,6 +4,8 @@ export const checkUserStatusLogin = async () => {
   try {
     const res = await axios.get("https://api.tarang.site/api/is-login", {
       headers: { "content-type": "application/json" },
+      withCredentials: true,
+      withXSRFToken: true,
     });
     console.log(res.data);
     return res.data;
