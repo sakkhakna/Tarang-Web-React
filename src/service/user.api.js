@@ -31,6 +31,7 @@ export const getUser = async () => {
 export const signOut = async () => {
   try {
     const res = await axios.post("https://api.tarang.site/logout");
+    console.log(res.status);
     return res.status;
   } catch (error) {
     console.log(error);

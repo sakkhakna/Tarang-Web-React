@@ -11,11 +11,7 @@ function ProtectedRoute() {
   if (isLoading) {
     return <Spinner />;
   }
-  return data.message === "Unauthorized" ? (
-    <Navigate to="/signin" />
-  ) : (
-    <Outlet />
-  );
+  return data.message === "Authorized" ? <Outlet /> : <Navigate to="/signin" />;
 }
 
 export default ProtectedRoute;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getUser } from "../../service/user.api";
+import { useNavigate } from "react-router-dom";
+import { getUser, signOut } from "../../service/user.api";
 import Input from "../shared/Input";
 import Button from "../shared/Button";
 import ProfileAvatar from "./ProfileAvatar";
@@ -16,6 +17,14 @@ function ProfileSection() {
     phone: data ? data.user.phone : "",
     photo: data ? data.user.photo : "",
   });
+  const navigate = useNavigate();
+  const signOut = async (e) => {
+    e.preventDefault();
+    const res = await signOut();
+    if (res === 204) {
+      navigate("/");
+    }
+  };
   return (
     <section className="w-full flex flex-col gap-4 justify-center items-center border border-gray-200 bg-white shadow p-4 md:p-10 rounded-xl">
       <div className="w-full flex justify-between items-center">
