@@ -1,5 +1,16 @@
 import axios from "axios";
 
+export const checkUserStatusLogin = async () => {
+  try {
+    const res = await axios.get("https://api.tarang.site/api/is-login", {
+      headers: { "content-type": "application/json" },
+    });
+  } catch (error) {
+    console.log(error);
+    return 401;
+  }
+};
+
 export const getUser = async () => {
   try {
     const res = await axios.get("https://api.tarang.site/api/user-data", {
@@ -7,6 +18,16 @@ export const getUser = async () => {
     });
     const data = res.data;
     return data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const signOut = async () => {
+  try {
+    const res = await axios.post("https://api.tarang.site/logout");
+    return res.status;
   } catch (error) {
     console.log(error);
     return null;

@@ -25,6 +25,7 @@ import SingleVenuePage from "./pages/user/venue/SingleVenue";
 import Otp from "./pages/auth/Otp";
 import Sport from "./pages/user/Sport";
 import Spinner from "./ui/Spinner";
+import ProtectedRoute from "./pages/auth/ProtectedRoute";
 
 function App() {
   const { dispatch } = useContext(AppContext);
@@ -32,7 +33,6 @@ function App() {
     queryKey: ["getUsers"],
     queryFn: getUser,
   });
-  console.log(data);
   useEffect(() => {
     dispatch({ type: "SET_USER_DATA", payload: data });
   }, [data]);
@@ -58,7 +58,14 @@ function App() {
             <Route path="/team" element={<Team />} />
             <Route path="/venue" element={<Venue />} />
             <Route path="/venue/:venueId" element={<SingleVenuePage />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/sport/:sportName/:sportId" element={<Sport />} />
             <Route path="/reservation" element={<ReservationForm />} />
             <Route path="/hosting" element={<HostingForm />} />
