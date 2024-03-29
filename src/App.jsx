@@ -61,9 +61,10 @@ function App() {
             <Route
               path="/profile"
               element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
+                <ProtectedRoute />
+                // <ProtectedRoute>
+                //   <Profile />
+                // </ProtectedRoute>
               }
             />
             <Route path="/sport/:sportName/:sportId" element={<Sport />} />
