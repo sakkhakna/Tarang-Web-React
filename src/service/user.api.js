@@ -6,9 +6,10 @@ export const checkUserStatusLogin = async () => {
       headers: { "content-type": "application/json" },
     });
     console.log(res.data);
+    return res.data;
   } catch (error) {
     console.log(error);
-    return 401;
+    return null;
   }
 };
 
