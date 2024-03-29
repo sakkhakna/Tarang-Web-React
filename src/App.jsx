@@ -28,18 +28,18 @@ import Spinner from "./ui/Spinner";
 import ProtectedRoute from "./pages/auth/ProtectedRoute";
 
 function App() {
-  const { dispatch } = useContext(AppContext);
-  const { data, isLoading } = useQuery({
-    queryKey: ["getUsers"],
-    queryFn: getUser,
-  });
-  useEffect(() => {
-    dispatch({ type: "SET_USER_DATA", payload: data });
-  }, [data]);
-  if (isLoading) {
-    return <Spinner fullScreenSpinner={true} />;
-  }
-  const role = data.is_admin === 1 ? "admin" : "user";
+  // const { dispatch } = useContext(AppContext);
+  // const { data, isLoading } = useQuery({
+  //   queryKey: ["getUsers"],
+  //   queryFn: getUser,
+  // });
+  // useEffect(() => {
+  //   dispatch({ type: "SET_USER_DATA", payload: data });
+  // }, [data]);
+  // if (isLoading) {
+  //   return <Spinner fullScreenSpinner={true} />;
+  // }
+  const role = "user";
   return (
     <Router>
       <Routes>
@@ -61,9 +61,9 @@ function App() {
             <Route
               path="/profile"
               element={
-                <ProtectedRoute />
+                // <ProtectedRoute />
                 // <ProtectedRoute>
-                //   <Profile />
+                <Profile />
                 // </ProtectedRoute>
               }
             />

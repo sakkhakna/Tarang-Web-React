@@ -1,20 +1,5 @@
 import axios from "axios";
 
-export const checkUserStatusLogin = async () => {
-  try {
-    const res = await axios.get("https://api.tarang.site/api/is-login", {
-      headers: { "content-type": "application/json" },
-      withCredentials: true,
-      withXSRFToken: true,
-    });
-    console.log(res.data);
-    return res.data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-};
-
 export const getUser = async () => {
   try {
     const res = await axios.get("https://api.tarang.site/api/user-data", {
