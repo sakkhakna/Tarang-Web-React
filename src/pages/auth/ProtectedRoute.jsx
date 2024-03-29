@@ -15,11 +15,7 @@ function ProtectedRoute() {
   if (isLoading) {
     return <Spinner />;
   }
-  return data.message === "Authorized" ? (
-    <Profile />
-  ) : (
-    <Navigate to="/signin" />
-  );
+  return message === "Authorized" ? <Profile /> : <Navigate to="/signin" />;
 }
 
 export default ProtectedRoute;
