@@ -29,7 +29,9 @@ function ProfileSection() {
     <section className="w-full flex flex-col gap-4 justify-center items-center border border-gray-200 bg-white shadow p-4 md:p-10 rounded-xl">
       <div className="w-full flex justify-between items-center">
         <h1 className="font-bold text-2xl md:text-4xl">My Profile</h1>
-        <Button customClass="bg-red-500">Log Out</Button>
+        <Button onClick={signOut} customClass="bg-red-500">
+          Log Out
+        </Button>
       </div>
       <div className="w-full h-[1px] bg-[#D9D9D9]"></div>
       {isLoading ? (
