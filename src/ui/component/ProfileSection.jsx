@@ -18,8 +18,7 @@ function ProfileSection() {
     photo: data ? data.user.photo : "",
   });
   const navigate = useNavigate();
-  const signOut = async (e) => {
-    e.preventDefault();
+  const signOut = async () => {
     const res = await signOut();
     if (res === 204) {
       navigate("/");
