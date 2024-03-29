@@ -5,6 +5,7 @@ export const checkUserStatusLogin = async () => {
     const res = await axios.get("https://api.tarang.site/api/is-login", {
       headers: { "content-type": "application/json" },
     });
+    console.log(res.data);
   } catch (error) {
     console.log(error);
     return 401;
