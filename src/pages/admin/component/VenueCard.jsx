@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Modal from "../../../ui/shared/Model"
 import DetailVenue from "./DetailVenue";
 import { useState } from "react";
@@ -28,7 +27,7 @@ function VenueCard({ data }) {
       {data && (
         <div
           onClick={() => handleModal(!openModel)}
-          className="flex flex-col w-full bg-white border border-gray-200 shadow rounded-xl"
+          className="flex flex-col w-full h-[250px] bg-white border border-gray-200 shadow rounded-xl"
         >
           <div className="w-full h-[150px] bg-[#eaeaea]">
             <img

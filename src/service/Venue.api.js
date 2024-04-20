@@ -72,16 +72,18 @@ export const deleteVenue = async (id) => {
 
 export const updateVenue = async (id , venue) => {
   try {
-    const response = await axios.put(`https://api.tarang.site/api/venues/${id}`, venue,{
-      headers : {
-        'Content-Type': 'multipart/form-data',Accept: 'application/json'
+    const response = await axios.post(`https://api.tarang.site/api/venues/${id}?_method=PUT`, venue, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Accept': 'application/json'
       },
-    })
-    const data = response.data
+    });
+    const data = response.data;
     console.log(data);
     return data;
   } catch(error) {
     console.log(error);
-    return null
+    return null;
   }
 }
+

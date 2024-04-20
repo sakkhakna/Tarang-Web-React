@@ -63,7 +63,7 @@ function Venue() {
               .slice(0, 4)
               .map((venue, index) => <VenueCard key={index} data={venue} />))}
         </div>
-        <div className="hidden w-1/2 bg-white rounded-xl md:flex items-center justify-center">
+        <div className="hidden w-1/2 h-screen bg-white rounded-xl md:flex items-center justify-center">
           <h1>No Venue Yet</h1>
         </div>
       </div>

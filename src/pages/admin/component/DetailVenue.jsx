@@ -11,7 +11,7 @@ function DetailVenue({venueData}) {
     size: venueData.size,
     sportType : venueData.sportTypes.id,
     description: venueData.description ,
-    photo: venueData.photo
+    photo: "",
   });
   console.log(updateData);
   const  navigation = useNavigate();
@@ -120,7 +120,7 @@ function DetailVenue({venueData}) {
                 type="file"
                 title={"image"}
                 id={"photo"}
-                // value={updateData.photo}
+                value={updateData.photo}
                 onChange={onChange}
               />
             </div>
