@@ -1,15 +1,12 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import { Outlet } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
 
-function UserLayout() {
+function UserLayout({ children }) {
   return (
     <>
       <Header />
-      <main className="max-w-7xl mx-auto">
-        <Outlet />
-      </main>
+      <main className="max-w-7xl mx-auto">{children}</main>
       <Footer />
       <ScrollToTop />
     </>

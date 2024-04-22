@@ -39,40 +39,147 @@ function App() {
   // if (isLoading) {
   //   return <Spinner fullScreenSpinner={true} />;
   // }
-  const role = "user";
+  const role = "admin";
   return (
     <Router>
       <Routes>
         {role === "admin" ? (
-          <Route path="/" element={<AdminLayout />}>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/venue" element={<AdminVenue />} />
-            <Route path="/team" element={<AdminTeam />} />
-            <Route path="/reserve" element={<AdminReservation />} />
-            <Route path="/user" element={<User />} />
-            <Route path="/venueform" element={<VenueForm />} />
-          </Route>
+          <>
+            <Route
+              path="/"
+              element={
+                <AdminLayout>
+                  <Dashboard />
+                </AdminLayout>
+              }
+            />
+            <Route
+              path="/venue"
+              element={
+                <AdminLayout>
+                  <AdminVenue />
+                </AdminLayout>
+              }
+            />
+            <Route
+              path="/team"
+              element={
+                <AdminLayout>
+                  <AdminTeam />
+                </AdminLayout>
+              }
+            />
+            <Route
+              path="/reserve"
+              element={
+                <AdminLayout>
+                  <AdminReservation />
+                </AdminLayout>
+              }
+            />
+            <Route
+              path="/user"
+              element={
+                <AdminLayout>
+                  <User />
+                </AdminLayout>
+              }
+            />
+            <Route
+              path="/venueform"
+              element={
+                <AdminLayout>
+                  <VenueForm />
+                </AdminLayout>
+              }
+            />
+          </>
         ) : (
-          <Route path="/" element={<UserLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/venue" element={<Venue />} />
-            <Route path="/venue/:venueId" element={<SingleVenuePage />} />
+          <>
+            <Route
+              path="/"
+              element={
+                <UserLayout>
+                  <Home />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/team"
+              element={
+                <UserLayout>
+                  <Team />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/venue"
+              element={
+                <UserLayout>
+                  <Venue />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/venue/:venueId"
+              element={
+                <UserLayout>
+                  <SingleVenuePage />
+                </UserLayout>
+              }
+            />
             <Route
               path="/profile"
               element={
                 // <ProtectedRoute />
                 // <ProtectedRoute>
-                <Profile />
+                <UserLayout>
+                  <Profile />
+                </UserLayout>
                 // </ProtectedRoute>
               }
             />
-            <Route path="/sport/:sportName/:sportId" element={<Sport />} />
-            <Route path="/reservation" element={<ReservationForm />} />
-            <Route path="/hosting" element={<HostingForm />} />
-            <Route path="/challenge" element={<ChallengeForm />} />
-            <Route path="/join" element={<JoinForm />} />
-          </Route>
+            <Route
+              path="/sport/:sportName/:sportId"
+              element={
+                <UserLayout>
+                  <Sport />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/reservation"
+              element={
+                <UserLayout>
+                  <ReservationForm />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/hosting"
+              element={
+                <UserLayout>
+                  <HostingForm />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/challenge"
+              element={
+                <UserLayout>
+                  <ChallengeForm />
+                </UserLayout>
+              }
+            />
+            <Route
+              path="/join"
+              element={
+                <UserLayout>
+                  <JoinForm />
+                </UserLayout>
+              }
+            />
+          </>
         )}
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
