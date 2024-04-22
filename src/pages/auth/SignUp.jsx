@@ -52,15 +52,15 @@ function SignUp() {
     navigate("/");
   };
   return (
-    <div className="flex flex-col gap-10 p-10 xl:px-0 items-center">
+    <div className="flex flex-col items-center gap-10 p-10 xl:px-0">
       <div className="max-w-5xl">
-        <div className="w-[960px] h-[540px] bg-white flex gap-4">
-          <div className="flex w-1/2 bg-[#d9d9d9] h-full items-center">
+        <div className="flex h-[540px] w-[960px] gap-4 bg-white">
+          <div className="flex h-full w-1/2 items-center bg-[#d9d9d9]">
             <img src={Logo} alt="logo" className="h-[470px] w-[470px]" />
           </div>
           <form
             onSubmit={onSubmit}
-            className="w-1/2 h-full flex flex-col gap-4 justify-center p-10"
+            className="flex h-full w-1/2 flex-col justify-center gap-4 p-10"
           >
             <h1 className="text-4xl font-bold">Sign Up</h1>
             <Input
@@ -100,17 +100,17 @@ function SignUp() {
                 </a>
               </p>
             </div>
-            <div className="w-full flex justify-center items-center gap-2">
-              <div className="border-b-[1px] w-[140px] border-[#d9d9d9]"></div>
+            <div className="flex w-full items-center justify-center gap-2">
+              <div className="w-[140px] border-b-[1px] border-[#d9d9d9]"></div>
               <h1>Sign In With</h1>
-              <div className="border-b-[1px] w-[140px] border-[#d9d9d9]"></div>
+              <div className="w-[140px] border-b-[1px] border-[#d9d9d9]"></div>
             </div>
-            <div className="w-full flex gap-10 justify-center">
+            <div className="flex w-full justify-center gap-10">
               <Link to="/">
-                <img src={Fb} alt="fb" className="w-[40px] h-[40px]" />
+                <img src={Fb} alt="fb" className="h-[40px] w-[40px]" />
               </Link>
               <Link to="https://api.tarang.site/auth/google/redirect">
-                <img src={Google} alt="google" className="w-[40px] h-[40px]" />
+                <img src={Google} alt="google" className="h-[40px] w-[40px]" />
               </Link>
             </div>
           </form>

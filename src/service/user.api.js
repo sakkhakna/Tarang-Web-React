@@ -1,24 +1,15 @@
 import axios from "axios";
 
-export const checkUserStatusLogin = async () => {
-  try {
-    const res = await axios.get("https://api.tarang.site/api/is-login", {
-      headers: { "content-type": "application/json" },
-      withCredentials: true,
-      withXSRFToken: true,
-    });
-    console.log(res.data);
-    return res.data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-};
+axios.defaults.withXSRFToken = true;
+axios.defaults.withCredentials = true;
 
 export const getUser = async () => {
   try {
     const res = await axios.get("https://api.tarang.site/api/user-data", {
-      headers: { "content-type": "application/json" },
+      headers: {
+        Accept: "application/json",
+        Referer: "https://tarang.site",
+      },
     });
     const data = res.data;
     return data;
@@ -31,9 +22,10 @@ export const getUser = async () => {
 export const signOut = async () => {
   try {
     const res = await axios.post("https://api.tarang.site/logout", {
-      headers: { "content-type": "application/json" },
-      withCredentials: true,
-      withXSRFToken: true,
+      headers: {
+        Accept: "application/json",
+        Referer: "https://tarang.site",
+      },
     });
     console.log(res.status);
     return res.status;
